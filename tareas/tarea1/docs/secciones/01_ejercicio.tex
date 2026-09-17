@@ -118,6 +118,59 @@ Escribe la ecuación (es) pertinente(s) y determina el orden, grado y dimensión
         \item Desventajas de este algoritmo
         \item Qué enfoque y ventajas presenta VoxelMorph y R2Net
     \end{itemize}
+
+\subsection*{Solución}
+
+De acuerdo con la presentación de clase (\textit{Presentación Ejemplos ED Computación Final}), este modelo utiliza el marco matemático \textbf{LDDMM} (\textit{Large Deformation Diffeomorphic Metric Mapping}):
+
+\[ \frac{d\phi(t)}{dt} = v(\phi(t), t) \]
+
+\textbf{Variables y parámetros:}
+\begin{itemize}[leftmargin=*]
+    \item $\phi(t): \Omega \subset \mathbb{R}^d \to \mathbb{R}^d$: Deformación espacial de la imagen a lo largo del tiempo pseudotemporal $t$.
+    \item $v(\cdot, t)$: Campo de velocidad suave que genera la deformación.
+    \item $\phi(0) = \text{identidad}$ (estado inicial sin deformar).
+    \item $\phi(1) = \phi_{\text{final}}$ (estado final alineado con la imagen objetivo).
+\end{itemize}
+
+La energía a minimizar viene dada por la funcional:
+\[ E(v) = \int_{0}^{1} \|v(\cdot, t)\|_V^2 dt + \frac{1}{\sigma^2} \|I_A \circ \phi^{-1} - I_B\|_{L^2}^2 \]
+
+A continuación, determinamos su orden, grado y dimensión:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Orden:} 1.\\
+    La derivada de mayor jerarquía respecto a la variable temporal $t$ es la primera derivada del mapa de deformación, $\frac{d\phi(t)}{dt}$.
+
+    \item \textbf{Grado:} 1.\\
+    La derivada $\frac{d\phi(t)}{dt}$ se encuentra elevada a la primera potencia y no tiene exponentes ni radicales.
+
+    \item \textbf{Dimensión:} $d$.\\
+    Corresponde a la dimensión del dominio espacial de la imagen $\Omega \subset \mathbb{R}^d$ (típicamente $d = 2$ para imágenes en dos dimensiones o $d = 3$ para volúmenes tridimensionales).
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Puntos Adicionales}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Definición formal de difeomorfismo:}\\
+    Un difeomorfismo es un mapeo o transformación geométrica entre dos espacios que es biyectiva (uno a uno y sobreyectiva), diferenciable (suave, sin saltos ni picos) y cuya inversa también es diferenciable. En términos prácticos de imágenes, asegura que la deformación no rompa la topología (los objetos no se cruzan sobre sí mismos y se conservan las vecindades).
+    \item \textbf{¿Dónde se aplica este método y qué problema pretende resolver?}\\
+    Se aplica intensivamente en visión por computadora y procesamiento de imágenes médicas (ej. resonancias magnéticas). Resuelve el problema de alineación geométrica, deformando una imagen "móvil" para que coincida espacialmente con una imagen "fija" o de referencia, permitiendo comparar estructuras a pesar de las variaciones anatómicas o de movimiento.
+
+    \item \textbf{Algoritmo clásico dado en las notas:}\\
+    El algoritmo clásico es \textbf{LDDMM} (\textit{Large Deformation Diffeomorphic Metric Mapping}), el cual resuelve un problema de optimización variacional e integración de la EDO campo a campo.
+
+    \item \textbf{Desventajas de este algoritmo:}\\
+    Es extremadamente \textbf{costoso computacionalmente y lento}, requiriendo iteraciones numéricas prolongadas (minutos u horas) para resolver las ecuaciones diferenciales por cada par de imágenes analizado.
+
+    \item \textbf{Enfoque y ventajas de VoxelMorph y R2Net:}\\
+    Utilizan un enfoque basado en \textbf{Aprendizaje Profundo (Deep Learning / Redes Neuronales Convolucionales)}.
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Enfoque:} Entrenan redes neuronales para aprender a predecir directamente el campo de deformación difeomórfica en una sola pasada hacia adelante.
+        \item \textbf{Ventajas:} Reducen el tiempo de cómputo de minutos a \textbf{milisegundos (tiempo real)} de forma escalable, manteniendo las propiedades de preservación de topología e invertibilidad.
+    \end{itemize}
+\end{itemize}
     
     \item Sistema de Lorenz.
     
