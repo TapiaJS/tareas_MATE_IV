@@ -119,64 +119,125 @@ Escribe la ecuación (es) pertinente(s) y determina el orden, grado y dimensión
         \item Qué enfoque y ventajas presenta VoxelMorph y R2Net
     \end{itemize}
 
-\subsection*{Solución}
+    \subsection*{Solución}
 
-De acuerdo con la presentación de clase (\textit{Presentación Ejemplos ED Computación Final}), este modelo utiliza el marco matemático \textbf{LDDMM} (\textit{Large Deformation Diffeomorphic Metric Mapping}):
+    De acuerdo con la presentación de clase (\textit{Presentación Ejemplos ED Computación Final}), este modelo utiliza el marco matemático \textbf{LDDMM} (\textit{Large Deformation Diffeomorphic Metric Mapping}):
 
-\[ \frac{d\phi(t)}{dt} = v(\phi(t), t) \]
+    \[ \frac{d\phi(t)}{dt} = v(\phi(t), t) \]
 
-\textbf{Variables y parámetros:}
-\begin{itemize}[leftmargin=*]
-    \item $\phi(t): \Omega \subset \mathbb{R}^d \to \mathbb{R}^d$: Deformación espacial de la imagen a lo largo del tiempo pseudotemporal $t$.
-    \item $v(\cdot, t)$: Campo de velocidad suave que genera la deformación.
-    \item $\phi(0) = \text{identidad}$ (estado inicial sin deformar).
-    \item $\phi(1) = \phi_{\text{final}}$ (estado final alineado con la imagen objetivo).
-\end{itemize}
-
-La energía a minimizar viene dada por la funcional:
-\[ E(v) = \int_{0}^{1} \|v(\cdot, t)\|_V^2 dt + \frac{1}{\sigma^2} \|I_A \circ \phi^{-1} - I_B\|_{L^2}^2 \]
-
-A continuación, determinamos su orden, grado y dimensión:
-
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Orden:} 1.\\
-    La derivada de mayor jerarquía respecto a la variable temporal $t$ es la primera derivada del mapa de deformación, $\frac{d\phi(t)}{dt}$.
-
-    \item \textbf{Grado:} 1.\\
-    La derivada $\frac{d\phi(t)}{dt}$ se encuentra elevada a la primera potencia y no tiene exponentes ni radicales.
-
-    \item \textbf{Dimensión:} $d$.\\
-    Corresponde a la dimensión del dominio espacial de la imagen $\Omega \subset \mathbb{R}^d$ (típicamente $d = 2$ para imágenes en dos dimensiones o $d = 3$ para volúmenes tridimensionales).
-\end{itemize}
-
-\vspace{0.3cm}
-\textbf{Puntos Adicionales}
-
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Definición formal de difeomorfismo:}\\
-    Un difeomorfismo es un mapeo o transformación geométrica entre dos espacios que es biyectiva (uno a uno y sobreyectiva), diferenciable (suave, sin saltos ni picos) y cuya inversa también es diferenciable. En términos prácticos de imágenes, asegura que la deformación no rompa la topología (los objetos no se cruzan sobre sí mismos y se conservan las vecindades).
-    \item \textbf{¿Dónde se aplica este método y qué problema pretende resolver?}\\
-    Se aplica intensivamente en visión por computadora y procesamiento de imágenes médicas (ej. resonancias magnéticas). Resuelve el problema de alineación geométrica, deformando una imagen "móvil" para que coincida espacialmente con una imagen "fija" o de referencia, permitiendo comparar estructuras a pesar de las variaciones anatómicas o de movimiento.
-
-    \item \textbf{Algoritmo clásico dado en las notas:}\\
-    El algoritmo clásico es \textbf{LDDMM} (\textit{Large Deformation Diffeomorphic Metric Mapping}), el cual resuelve un problema de optimización variacional e integración de la EDO campo a campo.
-
-    \item \textbf{Desventajas de este algoritmo:}\\
-    Es extremadamente \textbf{costoso computacionalmente y lento}, requiriendo iteraciones numéricas prolongadas (minutos u horas) para resolver las ecuaciones diferenciales por cada par de imágenes analizado.
-
-    \item \textbf{Enfoque y ventajas de VoxelMorph y R2Net:}\\
-    Utilizan un enfoque basado en \textbf{Aprendizaje Profundo (Deep Learning / Redes Neuronales Convolucionales)}.
+    \textbf{Variables y parámetros:}
     \begin{itemize}[leftmargin=*]
-        \item \textbf{Enfoque:} Entrenan redes neuronales para aprender a predecir directamente el campo de deformación difeomórfica en una sola pasada hacia adelante.
-        \item \textbf{Ventajas:} Reducen el tiempo de cómputo de minutos a \textbf{milisegundos (tiempo real)} de forma escalable, manteniendo las propiedades de preservación de topología e invertibilidad.
+        \item $\phi(t): \Omega \subset \mathbb{R}^d \to \mathbb{R}^d$: Deformación espacial de la imagen a lo largo del tiempo pseudotemporal $t$.
+        \item $v(\cdot, t)$: Campo de velocidad suave que genera la deformación.
+        \item $\phi(0) = \text{identidad}$ (estado inicial sin deformar).
+        \item $\phi(1) = \phi_{\text{final}}$ (estado final alineado con la imagen objetivo).
     \end{itemize}
-\end{itemize}
+
+    La energía a minimizar viene dada por la funcional:
+    \[ E(v) = \int_{0}^{1} \|v(\cdot, t)\|_V^2 dt + \frac{1}{\sigma^2} \|I_A \circ \phi^{-1} - I_B\|_{L^2}^2 \]
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 1.\\
+        La derivada de mayor jerarquía respecto a la variable temporal $t$ es la primera derivada del mapa de deformación, $\frac{d\phi(t)}{dt}$.
+
+        \item \textbf{Grado:} 1.\\
+        La derivada $\frac{d\phi(t)}{dt}$ se encuentra elevada a la primera potencia y no tiene exponentes ni radicales.
+
+        \item \textbf{Dimensión:} $d$.\\
+        Corresponde a la dimensión del dominio espacial de la imagen $\Omega \subset \mathbb{R}^d$ (típicamente $d = 2$ para imágenes en dos dimensiones o $d = 3$ para volúmenes tridimensionales).
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \textbf{Puntos Adicionales}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Definición formal de difeomorfismo:}\\
+        Un difeomorfismo es un mapeo o transformación geométrica entre dos espacios que es biyectiva (uno a uno y sobreyectiva), diferenciable (suave, sin saltos ni picos) y cuya inversa también es diferenciable. En términos prácticos de imágenes, asegura que la deformación no rompa la topología (los objetos no se cruzan sobre sí mismos y se conservan las vecindades).
+        \item \textbf{¿Dónde se aplica este método y qué problema pretende resolver?}\\
+        Se aplica intensivamente en visión por computadora y procesamiento de imágenes médicas (ej. resonancias magnéticas). Resuelve el problema de alineación geométrica, deformando una imagen "móvil" para que coincida espacialmente con una imagen "fija" o de referencia, permitiendo comparar estructuras a pesar de las variaciones anatómicas o de movimiento.
+
+        \item \textbf{Algoritmo clásico dado en las notas:}\\
+        El algoritmo clásico es \textbf{LDDMM} (\textit{Large Deformation Diffeomorphic Metric Mapping}), el cual resuelve un problema de optimización variacional e integración de la EDO campo a campo.
+
+        \item \textbf{Desventajas de este algoritmo:}\\
+        Es extremadamente \textbf{costoso computacionalmente y lento}, requiriendo iteraciones numéricas prolongadas (minutos u horas) para resolver las ecuaciones diferenciales por cada par de imágenes analizado.
+
+        \item \textbf{Enfoque y ventajas de VoxelMorph y R2Net:}\\
+        Utilizan un enfoque basado en \textbf{Aprendizaje Profundo (Deep Learning / Redes Neuronales Convolucionales)}.
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Enfoque:} Entrenan redes neuronales para aprender a predecir directamente el campo de deformación difeomórfica en una sola pasada hacia adelante.
+            \item \textbf{Ventajas:} Reducen el tiempo de cómputo de minutos a \textbf{milisegundos (tiempo real)} de forma escalable, manteniendo las propiedades de preservación de topología e invertibilidad.
+        \end{itemize}
+    \end{itemize}
     
     \item Sistema de Lorenz.
     
+    \subsection*{Solución}
+
+    De acuerdo con las presentaciones de clase (\textit{Presentación EDO SEDO relevante v1}), el sistema de Lorenz consta de tres ecuaciones diferenciales ordinarias acopladas, las cuales se definen de la siguiente manera:
+
+    \begin{align*}
+        \frac{dx}{dt} &= \sigma(y - x) \\
+        \frac{dy}{dt} &= x(\rho - z) - y \\
+        \frac{dz}{dt} &= xy - \beta z
+    \end{align*}
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 1.\\
+        El orden de un sistema de ecuaciones diferenciales se define por la derivada de mayor nivel presente. En este caso, todas las ecuaciones del sistema contienen únicamente primeras derivadas respecto al tiempo ($\frac{dx}{dt}$, $\frac{dy}{dt}$, $\frac{dz}{dt}$). Adicionalmente, la tabla resumen del documento clasifica a este sistema explícitamente con un orden de 1.
+
+        \item \textbf{Grado:} 1.\\
+        El grado es el exponente al que está elevada la derivada de mayor orden. En las tres ecuaciones, los términos diferenciales ($\frac{dx}{dt}$, $\frac{dy}{dt}$, $\frac{dz}{dt}$) están elevados implícitamente a la potencia de 1.
+
+        \item \textbf{Dimensión:} 3.\\
+        La dimensión de un sistema dinámico está dada por el número de variables de estado o ecuaciones dependientes acopladas. El modelo de Lorenz describe la evolución espacial en tres dimensiones usando tres variables dependientes ($x$, $y$, $z$) respecto a una sola variable independiente (el tiempo, $t$), por lo que se trata de un sistema de dimensión 3.
+    \end{itemize}
+    
     \item Crecimiento Logístico.
     
+    \subsection*{Solución}
+
+    De acuerdo con las presentaciones de clase (\textit{Presentación EDO SEDO relevante v1}), tenemos que:
+
+    \[ \frac{dP}{dt} = kP \left( 1 - \frac{P}{N} \right) \]
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 1.\\
+        El orden de la ecuación está dictado por la derivada de mayor nivel presente. En este modelo, solo aparece la primera derivada de la población $P$ con respecto al tiempo $t$ ($\frac{dP}{dt}$). Además, el propio documento menciona de forma explícita que se trata de una ecuación diferencial de primer orden.
+
+        \item \textbf{Grado:} 1.\\
+        El grado es el exponente al que está elevada la derivada de mayor orden. En esta expresión, el término $\frac{dP}{dt}$ está elevado implícitamente a la potencia de 1.
+
+        \item \textbf{Dimensión:} 1.\\
+        Se trata de una única ecuación diferencial ordinaria (EDO) escalar, ya que modela una sola variable dependiente (la población, $P$) en función de una única variable independiente (el tiempo, $t$).
+    \end{itemize}
+    
     \item Decaimiento Radioactivo.
+    
+    \subsection*{Solución}
+
+    De acuerdo con la presentación de clase (\textit{Presentación EDO SEDO relevante v1}), tenemos que:
+
+    \[ \frac{dN}{dt} = -\lambda N \]
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 1.\\
+        El orden de la ecuación lo dicta la derivada de mayor nivel presente. En este caso, solo interviene la primera derivada de la cantidad de núcleos $N$ con respecto al tiempo $t$ ($\frac{dN}{dt}$). 
+
+        \item \textbf{Grado:} 1.\\
+        El grado corresponde al exponente de la derivada de mayor orden. El término diferencial $\frac{dN}{dt}$ no tiene ningún exponente explícito, por lo que está elevado a la potencia de 1.
+
+        \item \textbf{Dimensión:} 1.\\
+        Se trata de una única ecuación diferencial ordinaria escalar. Modela el decaimiento utilizando una sola variable dependiente (el número de núcleos de la sustancia, $N$) en función de una única variable independiente (el tiempo, $t$).
+    \end{itemize}
     
     \item Modelo SIR para Gusanos Informáticos.
     \begin{itemize}[leftmargin=*]
@@ -185,10 +246,102 @@ A continuación, determinamos su orden, grado y dimensión:
         \item Qué representa cada función o parámetro usado en el sistema de ecuaciones
     \end{itemize}
     
+    \subsection*{Solución}
+
+    De acuerdo con la presentación de clase \textit{Presentación Ejemplos ED Computación Final}:
+
+    \begin{align*}
+        \frac{dS(t)}{dt} &= -\beta S(t) I(t) \\
+        \frac{dI(t)}{dt} &= \beta S(t) I(t) - \gamma I(t) \\
+        \frac{dR(t)}{dt} &= \gamma I(t)
+    \end{align*}
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 1.\\
+        La derivada de mayor nivel en las tres ecuaciones que componen el sistema es una primera derivada respecto al tiempo ($\frac{dS(t)}{dt}$, $\frac{dI(t)}{dt}$, $\frac{dR(t)}{dt}$).
+
+        \item \textbf{Grado:} 1.\\
+        Ninguno de los términos diferenciales de primer orden tiene un exponente mayor a 1 de forma explícita.
+
+        \item \textbf{Dimensión:} 3.\\
+        El modelo representa un sistema dinámico acoplado con tres variables de estado dependientes ($S(t)$, $I(t)$ y $R(t)$) en función de una única variable independiente ($t$).
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \textbf{Puntos adicionales}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Propósito y daños de la amenaza:}\\
+        El propósito del modelo consiste en analizar el comportamiento y expansión del malware conocido como \textit{Code Red} (un gusano informático), el cual fue lanzado a la red en julio de 2001. Atacaba servidores con el entorno Microsoft IIS instalándose directamente en la memoria RAM sin dejar rastros en los discos duros. Causando daños que van desde la alteración del contenido de los sitios web con la leyenda ``Hacked by Chinese!'', hasta generar listas aleatorias de direcciones IP para buscar nuevas víctimas, lo que consumía todo el ancho de banda y la capacidad de procesamiento de los servidores afectados.
+
+        \item \textbf{Autor y año de publicación:}\\
+        El \textbf{modelo SIR} original fue desarrollado por \textbf{William Kermack} y \textbf{Anderson Gray McKendrick} en \textbf{1927}, con el propósito de modelar epidemias biológicas. 
+
+        No existe un único desarrollador específico para el modelo SIR aplicado a gusanos informáticos, ya que es una adaptación del modelo epidemiológico clásico. Sin embargo, se destaca la aplicación de modelos epidemiológicos (como el SIR y el SI) para simular la propagación de gusanos informáticos en años posteriores. Siendo que se menciona el uso del modelo SI para gusanos informáticos en trabajos de autores como Chang Chun et al.  (2002), Yang y Chenxi (2003) y Tassier (2005) \cite{guevara2014aproximacion}. 
+
+        \item \textbf{Parámetros y funciones del sistema:}
+        \begin{itemize}[leftmargin=*]
+            \item $S(t)$: Número de \textit{hosts} o servidores \textbf{susceptibles} a ser infectados en el tiempo $t$.
+            \item $I(t)$: Número de \textit{hosts} o servidores \textbf{infectados} (que han sido comprometidos y contagian activamente) en el tiempo $t$.
+            \item $R(t)$: Número de \textit{hosts} o servidores \textbf{recuperados / removidos} (equipos limpiados, parcheados, aislados o fuera de línea) en el tiempo $t$.
+            \item $\beta = \alpha \cdot \eta$: Tasa de \textbf{infección}, donde $\alpha$ representa la velocidad de escaneo del gusano y $\eta$ la probabilidad de éxito de la infección.
+            \item $\gamma$: Tasa de \textbf{recuperación} o remoción (rapidez con la que se aplican parches de seguridad o se desconectan los equipos).
+            \item $N$: Número total de servidores o nodos en la red.
+            \item \textit{Regla de Conservación:} El modelo respeta el principio $S(t) + I(t) + R(t) = N$, estableciendo que la cantidad de equipos en el universo de estudio es fija.
+        \end{itemize}
+    \end{itemize}
+    
     \item Redes TCP/AQM.
     \begin{itemize}[leftmargin=*]
         \item De quién es el modelo y en que año se planteó
         \item Qué representa cada función o parámetro usado en el sistema de ecuaciones
         \item Explica brevemente para que sirve este modelo de Redes y que problema soluciona.
+    \end{itemize}
+
+    \subsection*{Solución}
+
+    De acuerdo con la presentación de clase (\textit{Presentación Ejemplos ED Computación Final}):
+
+    \begin{align*}
+        \frac{dW(t)}{dt} &= \frac{1}{R(t)} - \frac{W^2(t)}{2R(t)} p(t - R(t)) \\
+        \frac{dq(t)}{dt} &= \frac{N(t)}{R(t)} W(t) - C
+    \end{align*}
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 1.\\
+        Las derivadas de mayor orden presentes son primeras derivadas con respecto al tiempo ($\frac{dW}{dt}$ y $\frac{dq}{dt}$).
+        
+        \item \textbf{Grado:} 1.\\
+        Ninguno de los términos diferenciales de primer orden está elevado a una potencia mayor que 1.
+        
+        \item \textbf{Dimensión:} 2.\\
+        El modelo representa un sistema de dos ecuaciones diferenciales acopladas, donde las variables dependientes de estado son el tamaño de la ventana ($W$) y el tamaño de la cola ($q$).
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \textbf{Puntos adicionales:}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{¿De quién es el modelo y en qué año se planteó?}\\
+        El modelo TCP/AQM (Control de Congestión Activa de Colas) se basó en un modelo matemático presentado por \textbf{Hollot et al. en 2002} para describir el comportamiento de enrutadores congestionados \cite{puerto_pina_tcp_aqm}. 
+
+        \item \textbf{¿Qué representa cada función o parámetro usado en el sistema de ecuaciones?}
+        \begin{itemize}[leftmargin=*]
+            \item $W(t)$: Tamaño promedio de la \textbf{ventana de congestión TCP} (medido en paquetes de datos), la cual dicta cuántos paquetes puede enviar el emisor sin esperar confirmación.
+            \item $q(t)$: Longitud o tamaño promedio de la \textbf{cola (búfer) en el router} (medido en paquetes).
+            \item $p(t)$: \textbf{Probabilidad de pérdida o marcado de paquetes} impuesta por el algoritmo AQM.
+            \item $R(t)$: \textbf{RTT} (\textit{Round-Trip Time} o Tiempo de Ida y Vuelta), definido como $R(t) = \frac{q(t)}{C} + T_p$, donde $T_p$ es el retardo de propagación en la fibra/cable y $\frac{q(t)}{C}$ es el retardo en la cola del router.
+            \item $N(t)$: Número de sesiones o flujos TCP activos que comparten el enlace.
+            \item $C$: \textbf{Capacidad del enlace de comunicación} (tasa de servicio del router medida en paquetes por segundo).
+        \end{itemize}
+
+        \item \textbf{¿Para qué sirve este modelo de Redes y qué problema soluciona?}\\
+        Permite analizar, diseñar y optimizar algoritmos de control de flujo y congestión en Internet, evaluando la estabilidad del tráfico de datos de forma analítica sin necesidad de simulaciones lentas paquete por paquete. 
+        
+        El problema que soluciona consiste en detener y prevenir la latencia masiva indeseada conocida como \textbf{Bufferbloat} (saturación de los búferes de los routers). Al descartar o marcar paquetes de forma preventiva antes de que el búfer se llene por completo, informa a los emisores TCP que reduzcan su velocidad de transmisión, reduciendo drásticamente la latencia y evitando la pérdida masiva de datos.
     \end{itemize}
 \end{enumerate}
