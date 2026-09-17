@@ -1,0 +1,59 @@
+% ============================================================
+% Sección 3
+% ============================================================
+\section{3 Consideraciones en la solución de una EDO}
+
+\begin{tcolorbox}[enunciado]
+\textbf{Clases:}
+\begin{itemize}[leftmargin=*]
+    \item Solución EDO con y sin unicidad 24Ago24 MCA4
+    \item Sol Equilibrio, Curva Integral, Campo Direccional 26 Ago 2026 MCA4
+\end{itemize}
+
+\textbf{Software:}
+\begin{itemize}[leftmargin=*]
+    \item Wolfram Cloud: \texttt{EDO Logistica MCA4.nb}
+    \item Github: \texttt{1.1\_Campo Direccional\_y\_Curva Integral}
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{0.3cm}
+\textbf{Responde:}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item Qué se entiende por curva integral (solución)
+    
+    \item Usa la gráfica (código) al final de \texttt{EDO Logistica\_MCA4.nb} o en el segundos 40 de la clase del 24 de Agosto. La gráfica muestra varias soluciones para la EDO Logística con distintas condiciones iniciales $P(t_{0})=P_{0}$.
+    \begin{itemize}[leftmargin=*]
+        \item ¿Cuál es la capacidad de carga en el código?
+        \item ¿Qué tiempo $t_{0}$ iniciales se utilizaron?
+        \item !!! Para el caso $y[0]=-1$ qué error tiene la solución que graficó el programa
+    \end{itemize}
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Di en que caso se daría cada una de las rectas (punteadas) que ahí se muestran.
+    \end{enumerate}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{figura1.png}
+        \caption{Curvas Integrales de la Logística}
+    \end{figure}
+
+    \item LA EDO
+    \[ \frac{dy}{dx}=\frac{4-2x}{3y^{2}-5} \]
+    tiene por solución
+    \[ y^{3}-5y+x^{2}-4x=c \]
+    con $c \in \mathbb{R}$ una constante. Si graficamos esta expresión para algunas $c$, obtenemos curvas como se muestran en la figura 2.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figura2.png}
+        \caption{Gráficas de la Solución $y^3-5y+x^2-4x=c$}
+    \end{figure}
+    
+    Trascribe los código \texttt{CURVAS\_EC\_SOL\_EDO\_DY\_4-2X\_DIV\_3Y\textasciicircum 2-5.PY}, \texttt{CAMPO\_DIRECCIONAL CURVAS 2X\_DIV\_3Y\textasciicircum 2-5.PY} y contesta lo siguiente:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item La curva dibujada para alguna $c$ es realmente una curva integral? justifica
+        \item Para $c=-6$, gráficamente cuáles son las curvas integrales.
+        \item Da condiciones iniciales que garanticen obtener cada una de las posibles soluciones del inciso anterior.
+    \end{enumerate}
+\end{enumerate}

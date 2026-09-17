@@ -1,0 +1,64 @@
+% ============================================================
+% Sección 4
+% ============================================================
+\section{4 Puntos Críticos y Soluciones de Equilibrio}
+
+\begin{tcolorbox}[enunciado]
+\textbf{Clases:}
+\begin{itemize}[leftmargin=*]
+    \item Sol Equilibrio Curva Integral, Campo Direccional 26 Ago 2026 MCA4
+    \item Isoclinas, Análisis Cualitativo 1 MCA4 2Sep26
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{0.3cm}
+\textbf{Responde:}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item ¿Qué es una solución de equilibrio?
+    
+    \vspace{0.3cm}
+    \noindent \textbf{Encuentra los puntos críticos o soluciones de equilibrio en cada caso:}
+    \vspace{0.2cm}
+    
+    \item \textbf{EDO, con $y(x)$}
+    \[ y^{\prime}=x^{3}-2x^{2}-5x+6 \]
+
+    \item \textbf{EDO (arquetipo) con bifurcación nodo-silla, autónoma (vista en clase)} dada:
+    \[ \dot{x}=\mu-x^{2} \]
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item $\mu<0$
+        \item $\mu=0$
+        \item $\mu>0$
+    \end{enumerate}
+
+    \item \textbf{Logística}
+    \[ \frac{dP}{dt}=rP\left(1-\frac{P}{K}\right) \]
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Soluciones de equilibrio
+        \item Qué interpretación físico o biológica tienen las soluciones de equilibrio.
+    \end{enumerate}
+
+    \item \textbf{Modelo SIR para Gusanos Informáticos}
+    
+    Usado en el análisis del gusano Code Red (Zou et al., IEEE 2002):
+    
+    \textbf{Parámetros:}
+    \begin{itemize}[leftmargin=*]
+        \item $S(t)$: hosts susceptibles
+        \item $I(t)$: hosts infectados
+        \item $R(t)$: hosts recuperados
+        \item $\beta=\alpha\cdot\eta$: tasa de infección
+        \item $\gamma$: tasa de recuperación
+    \end{itemize}
+    
+    \begin{align*}
+        \frac{dS(t)}{dt} &= -\beta S(t)I(t) \\
+        \frac{dI(t)}{dt} &= \beta S(t)I(t)-\gamma I(t) \\
+        \frac{dR(t)}{dt} &= \gamma I(t)
+    \end{align*}
+    
+    \textbf{Conservación:} $S(t)+I(t)+R(t)=N$
+    
+    \textbf{HINT:} En este caso cada ED tiene que evaluar 0.
+\end{enumerate}

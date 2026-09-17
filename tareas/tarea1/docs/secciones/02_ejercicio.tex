@@ -1,0 +1,97 @@
+% ============================================================
+% Sección 2: Solución de una ecuación diferencial
+% ============================================================
+\section{2 Solución de una ecuación diferencial}
+
+\begin{tcolorbox}[enunciado]
+\textbf{Clase:}
+\begin{itemize}[leftmargin=*]
+    \item Solución EDO con y sin unicidad 24Ago24 MCA4
+\end{itemize}
+\textbf{¡ERRATA!} Minuto 1:21 debe ser: ``Si $y(x)\ne\pm\sqrt{5/3}$;'' [dice igual $=$]
+\end{tcolorbox}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item Escribe la definición formal de ``Solución de una EDO'', dada en clase.
+    
+    Muestra que dada una EDO la función o funciones propuestas son soluciones de la EDO correspondiente.
+    
+    \item \textbf{Oscilador Armónico Amortiguado}
+    \[ \frac{d^{2}x}{dt^{2}}+2\zeta\omega_{0}\frac{dx}{dt}+\omega_{0}^{2}x=0 \]
+    Para interpretaciones físicas lo común es $\zeta\ge0$, $\omega_{0}>0$. Tomando $\gamma=\zeta\omega_{0}$:
+    \[ \frac{d^{2}x}{dt^{2}}+2\gamma\frac{dx}{dt}+\omega_{0}^{2}x=0 \]
+    Los parámetros se interpretan como:
+    \begin{itemize}[leftmargin=*]
+        \item $\omega_0$ (Frecuencia angular natural) Frecuencia a la que oscila el sistema en ausencia de amortiguamiento. Mide la tasa de disipación de energía en el sistema.
+        \item $\gamma$ (Coeficiente de amortiguamiento o factor de amortiguamiento fraccional) Mide qué tan rápido se disipa la energía del sistema.
+        \item $\zeta$ (Factor de amortiguamiento -adimensional-) Mide qué tan amortiguado está el sistema.
+    \end{itemize}
+    Funciones:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Sin amortiguamiento $\gamma=0$, $\zeta=0$.
+        \begin{equation*}
+            x(t)=A \cos(\omega_{0}t)+B \sin(\omega_{0}t) \tag{1}
+        \end{equation*}
+        \item Caso sub-amortiguado, $\gamma<\omega_{0}$, $0<\zeta<1$.
+        \begin{equation*}
+            \omega_{d}=\sqrt{\omega_{0}^{2}-\gamma^{2}} \tag{2}
+        \end{equation*}
+        \begin{equation*}
+            x(t)=e^{-\gamma t}[A \cos(\omega_{d}t)+B \sin(\omega_{d}t)] \tag{3}
+        \end{equation*}
+        \item Amortiguamiento crítico, $\gamma=\omega_{0}$, $0<\zeta<1$.
+        \begin{equation*}
+            x(t)=(A+Bt)e^{-\gamma t} \tag{4}
+        \end{equation*}
+        \item Caso sobre-amortiguado, $\gamma>\omega_{0}$, $\zeta>1$.
+        \[ x(t)=Ae^{-\alpha_{1}t}+Be^{-\alpha_{2}t} \]
+        \begin{equation*}
+            \alpha_{1}=\gamma+\sqrt{\gamma^{2}-\omega_{0}^{2}} \quad \text{y} \quad \alpha_{2}=\gamma-\sqrt{\gamma^{2}-\omega_{0}^{2}}. \tag{5}
+        \end{equation*}
+    \end{enumerate}
+
+    \item \textbf{Dinámica Poblacional con Factor (capacidad) de Carga. Ecuación Logística o de Verhulst}
+    
+    La tasa de cambio de una población $P$ con respecto al tiempo $t$, dado que al tiempo $t_{0}$ cuenta con $P_{0}$ integrantes, esta dada por la EDO:
+    \[ \frac{dP}{dt}=rP\left(1-\frac{P}{K}\right) \]
+    \[ P(t_{0})=P_{0} \quad \text{(Condiciones iniciales)} \]
+    donde $K>0$ es ``carrying capacity'' y $r>0$ ``growth rate'', ambas constantes.
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Función:
+        \[ P(t)=\frac{KP_{0}}{P_{0}+(K-P_{0})e^{r(t_{0}-t)}} \]
+        \item Muestra que si $t_{0}=0$ en la función anterior, entonces esta se puede reescribir en la forma vista en clase:
+        \[ P(t)=\frac{KP_{0}e^{rt}}{K+P_{0}(e^{rt}-1)} \]
+        \item ¿Qué tipo de condiciones iniciales tiene la ecuación del inciso b?
+        \item Cuál de las funciones es más general (da todas las soluciones).
+    \end{enumerate}
+
+    \item \textbf{EDO Separable no lineal.}
+    \[ \frac{dy}{dx}=\frac{4-2x}{3y^{2}-5} \]
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Función:
+        \[ y^{3}-5y+x^{2}-4x=c \]
+        \item ¿Qué valores nunca se pueden tomar? ¿Son puntos del demonio o funciones?
+        \item Qué condición impone a las curvas integrales los valores determinados en el inciso anterior.
+    \end{enumerate}
+
+    \item \textbf{Ecuación de Bernoulli}
+    \[ \frac{dz}{dt}+z=z^{2} \]
+    Función:
+    \[ z(t)=\frac{1}{1+Ce^{t}} \]
+
+    \item \textbf{EDO Exacta.}
+    \[ x(2x^{2}+y^{2})+y(x^{2}+2y^{2})y^{\prime}=0 \]
+    Función:
+    \[ \frac{1}{2}(x^{4}+x^{2}y^{2}+y^{4})=k \]
+
+    \item \textbf{Sistema de EDO.} Sean $x(t)$, $y(t)$, tal que:
+    \begin{align*}
+        x^{\prime} &= -x-3y \\
+        y^{\prime} &= 2x-y
+    \end{align*}
+    Funciones:
+    \begin{align*}
+        x(t) &= e^{-t}[3c_{1}\cos(\sqrt{6}t)+3c_{2}\sin(\sqrt{6}t)] \\
+        y(t) &= e^{-t}[\sqrt{6}c_{1}\sin(\sqrt{6}t)-\sqrt{6}c_{2}\cos(\sqrt{6}t)]
+    \end{align*}
+\end{enumerate}
