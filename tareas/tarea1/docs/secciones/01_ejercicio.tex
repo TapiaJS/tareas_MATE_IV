@@ -9,14 +9,105 @@ Escribe la ecuación (es) pertinente(s) y determina el orden, grado y dimensión
 
 \begin{enumerate}[label=\arabic*., leftmargin=*]
     \item Curvatura de la Córnea.
+    \subsection{Solución}
+
+    En la presentación correspondiente a las EDOs de orden 2 y superior, la forma matemática que modela el perfil o la curvatura de la córnea es:
+
+    $$\frac{d^2y}{dx^2}=\frac{1}{R}\left(1+\left(\frac{dy}{dx}\right)^2\right)^{3/2}$$
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 2.\\
+        El orden de una ecuación diferencial está dado por la derivada de mayor nivel que aparece en ella. En esta ecuación, la derivada más alta es la segunda derivada ($\frac{d^2y}{dx^2}$). Además, el propio documento clasifica esta EDO explícitamente con un orden de 2 en su tabla de resumen.
+
+        \item \textbf{Grado:} 2.\\
+        El grado es el exponente al que está elevada la derivada de mayor orden, siempre y cuando la ecuación esté escrita como un polinomio respecto a sus derivadas. Para eliminar la potencia fraccionaria ($3/2$) del lado derecho y convertirla en un polinomio, debemos elevar ambos lados de la ecuación al cuadrado. Al hacerlo, obtenemos $\left(\frac{d^2y}{dx^2}\right)^2=\frac{1}{R^2}\left(1+\left(\frac{dy}{dx}\right)^2\right)^3$. Así, la segunda derivada queda elevada a la potencia de 2.
+
+        \item \textbf{Dimensión:} 1.\\
+        Se trata de una Ecuación Diferencial Ordinaria (EDO) escalar, lo que significa que el sistema consta de una única ecuación con una sola variable independiente ($x$) y una variable dependiente ($y$).
+    \end{itemize}
     
     \item Formación de Patrones (Alan Turing).
-    
+    \subsection{Solución}
+
+    La ecuación diferencial es:
+
+    \[ \frac{d^2u}{dt^2} + \gamma \frac{du}{dt} + f(u, v) = 0 \]
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 2.\\
+        El orden de una ecuación diferencial se determina por la derivada de mayor nivel que contiene. En este modelo, la derivada más alta es la segunda derivada de la variable $u$ respecto al tiempo $t$ ($\frac{d^2u}{dt^2}$). Además, la tabla de resumen del mismo documento clasifica explícitamente a este modelo con un orden de 2.
+
+        \item \textbf{Grado:} 1.\\
+        El grado es la potencia a la que está elevada la derivada de mayor orden. En esta ecuación, el término $\frac{d^2u}{dt^2}$ no tiene ningún exponente explícito, lo que significa que está elevado a la potencia de 1.
+
+        \item \textbf{Dimensión:} 2 (como sistema).\\
+        \textit{Justificación:} La dimensión se refiere al número de variables dependientes (o al número de ecuaciones en un sistema). Aunque sólo hay una ecuación diferencial de forma explícita, el término de reacción $f(u, v)$ indica que la dinámica depende de dos variables de estado distintas ($u$ y $v$). Lo que implica que en realidad se trata de un sistema de dos ecuaciones acopladas, dándole una dimensión de 2.
+    \end{itemize}
+
     \item Dinámica de Opiniones.
+    \subsection{Solución}
+
+    La ecuación diferencial es:
+
+    \[ \frac{d^2x}{dt^2} + \gamma \frac{dx}{dt} + \sin(x) = f(t) \]
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 2.\\
+        El orden está determinado por la derivada de mayor nivel presente en la ecuación. En este caso, es la segunda derivada de la variable $x$ respecto al tiempo $t$ ($\frac{d^2x}{dt^2}$). Además, la tabla de resumen del mismo documento lo clasifica explícitamente como una EDO de orden 2.
+
+        \item \textbf{Grado:} 1.\\
+        El grado corresponde al exponente al que está elevada la derivada de mayor orden (asumiendo forma polinómica). Como el término $\frac{d^2x}{dt^2}$ no tiene ningún exponente explícito, se entiende que está elevado a la potencia de 1.
+
+        \item \textbf{Dimensión:} 1.\\
+        Se trata de una sola ecuación diferencial ordinaria (EDO) escalar. Consiste en una única variable dependiente (la opinión promedio, $x$) y una variable independiente (el tiempo, $t$).
+    \end{itemize}
     
     \item Comunicación 5G. Detección MIMO con EDO's.
     \begin{itemize}[leftmargin=*]
         \item Qué hace la tecnología MIMO y qué objetivo tiene.
+    \end{itemize}
+
+    \subsection*{Solución}
+
+    De acuerdo con la presentación de clase (\textit{Presentación Ejemplos ED Computación Final}):
+
+    \[ \frac{dx(t)}{dt} = H^T (y - H x(t)) - \lambda x(t) \]
+
+    \textbf{Parámetros y variables:}
+    \begin{itemize}[leftmargin=*]
+        \item $H \in \mathbb{C}^{m \times n}$: Matriz del canal de comunicación MIMO.
+        \item $y \in \mathbb{C}^m$: Vector de señal recibida en las $m$ antenas receptoras.
+        \item $x(t) \in \mathbb{C}^n$: Vector de señal estimada en el tiempo $t$ para las $n$ antenas transmisoras.
+        \item $\lambda > 0$: Parámetro de regularización $\ell_2$.
+    \end{itemize}
+
+    A continuación, determinamos su orden, grado y dimensión:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Orden:} 1.\\
+        La derivada de mayor jerarquía presente en la ecuación es la primera derivada del vector de señales respecto al tiempo, $\frac{dx(t)}{dt}$.
+
+        \item \textbf{Grado:} 1.\\
+        La derivada $\frac{dx(t)}{dt}$ se encuentra elevada a la primera potencia y no está afectada por exponentes fraccionarios o radicales.
+
+        \item \textbf{Dimensión:} $n$.\\
+        Como $x(t)$ es un vector de estado de $n$ dimensiones ($x(t) \in \mathbb{C}^n$), el sistema está compuesto por $n$ ecuaciones diferenciales de primer orden acopladas, correspondientes a cada una de las señales transmitidas.
+    \end{itemize}
+
+    \textbf{Pregunta Adicional}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{¿Qué hace la tecnología MIMO?}\\
+        MIMO (\textit{Multiple-Input Multiple-Output}, o Múltiples Entradas y Múltiples Salidas) transmite y recibe múltiples señales de datos de manera simultánea sobre el mismo canal de radio mediante el uso de varias antenas transmisoras y receptoras.
+        
+        \item \textbf{¿Qué objetivo tiene?}\\
+        Su objetivo principal es aumentar drásticamente la velocidad de transmisión de datos (tasa de transferencia) y la confiabilidad de las conexiones inalámbricas en redes 5G, sin necesidad de consumir espectro radioeléctrico adicional.
     \end{itemize}
     
     \item Visión por Computador. Registro Difeomórfico de Imágenes.
