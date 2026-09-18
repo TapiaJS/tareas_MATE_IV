@@ -1,5 +1,5 @@
 % ============================================================
-% Sección 2: Solución de una ecuación diferencial
+% Sección 2
 % ============================================================
 \section{2 Solución de una ecuación diferencial}
 
@@ -14,8 +14,20 @@
 \begin{enumerate}[label=\arabic*., leftmargin=*]
     \item Escribe la definición formal de ``Solución de una EDO'', dada en clase.
     
-    Muestra que dada una EDO la función o funciones propuestas son soluciones de la EDO correspondiente.
+    \subsection{Definición formal de ``Solución de una EDO''}
+
+    Dada una EDO de la forma:
+    \[ x^{(k)} = \vec{F}(t, x(t), x'(t), \dots, x^{(k-1)}(t)) \]
+
+    Una solución de la EDO es una función $\gamma : I \to \mathbb{R}^d$ la cual es de clase $C^k$ y satisface las siguientes condiciones:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{i)} $I$ es un intervalo abierto.
+        \item \textbf{ii)} Sea el vector $\vec{v}(t) = \left(t, \gamma(t), \frac{d}{dt}\gamma(t), \dots, \frac{d^{k-1}}{dt^{k-1}}\gamma(t)\right)$, entonces $\vec{v}(t) \subset U, \forall t \in I$.
+        \item \textbf{iii)} $\frac{d^k}{dt^k}\gamma(t) = \vec{F}(\vec{v}(t))$.
+    \end{itemize}
     
+    Muestra que dada una EDO la función o funciones propuestas son soluciones de la EDO correspondiente.
     \item \textbf{Oscilador Armónico Amortiguado}
     \[ \frac{d^{2}x}{dt^{2}}+2\zeta\omega_{0}\frac{dx}{dt}+\omega_{0}^{2}x=0 \]
     Para interpretaciones físicas lo común es $\zeta\ge0$, $\omega_{0}>0$. Tomando $\gamma=\zeta\omega_{0}$:
@@ -32,6 +44,78 @@
         \begin{equation*}
             x(t)=A \cos(\omega_{0}t)+B \sin(\omega_{0}t) \tag{1}
         \end{equation*}
+
+        \subsection{Solución}
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Parámetros del caso:} $\gamma = 0$ y $\zeta = 0$.
+            
+            \item \textbf{Ecuación Diferencial:}
+            \[ \frac{d^2x}{dt^2} + 2(0)\frac{dx}{dt} + \omega_0^2 x = 0 \implies \frac{d^2x}{dt^2} + \omega_0^2 x = 0 \]
+            
+            \item \textbf{Expresión en forma normal ($k = 2$):}
+            \[ \frac{d^2x}{dt^2} = -\omega_0^2 x \]
+            
+            \item \textbf{Elementos formales:}
+            \begin{itemize}[leftmargin=*]
+                \item \textbf{Orden de la EDO ($k$):} $k = 2$ (segundo orden).
+                \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $\gamma: I \to \mathbb{R}^1$).
+                \item \textbf{Función $\vec{F}$ y dominio $U$:} La función del lado derecho es $\vec{F}(t, x, x') = -\omega_0^2 x$, definida sobre el conjunto abierto $U = \mathbb{R} \times \mathbb{R} \times \mathbb{R} = \mathbb{R}^3$.
+            \end{itemize}
+            
+            \item \textbf{Función propuesta:} $\gamma(t) = A \cos(\omega_0 t) + B \sin(\omega_0 t)$, donde $A, B \in \mathbb{R}$ son constantes arbitrarias y $\omega_0 > 0$.
+        \end{itemize}
+
+        \subsubsection*{Verificación de las Condiciones }
+
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Regularidad $C^k$ ($C^2$):}\\
+            Calculamos las dos primeras derivadas de la función propuesta $\gamma(t)$:
+            \begin{enumerate}[label=\arabic*., leftmargin=*]
+                \item \textbf{Primera derivada:}
+                \[ \frac{d}{dt}\gamma(t) = -A \omega_0 \sin(\omega_0 t) + B \omega_0 \cos(\omega_0 t) \]
+                \item \textbf{Segunda derivada:}
+                \[ \frac{d^2}{dt^2}\gamma(t) = -A \omega_0^2 \cos(\omega_0 t) - B \omega_0^2 \sin(\omega_0 t) \]
+            \end{enumerate}
+            Factorizando $-\omega_0^2$:
+            \[ \frac{d^2}{dt^2}\gamma(t) = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
+            Como las funciones trigonométricas $\cos(\omega_0 t)$ y $\sin(\omega_0 t)$ son infinitamente diferenciables ($C^\infty$) en todo $\mathbb{R}$, la función $\gamma(t)$ es de clase $C^2(I)$.
+
+            \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
+            Elegimos el intervalo abierto $I = (-\infty, \infty) = \mathbb{R}$.
+            
+            \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(t) \in U, \forall t \in I$):}\\
+            Para $k = 2$, el vector de estado $\vec{v}(t)$ está definido por:
+            \[ \vec{v}(t) = \left(t, \gamma(t), \frac{d}{dt}\gamma(t)\right) = \left(t, A \cos(\omega_0 t) + B \sin(\omega_0 t), -A \omega_0 \sin(\omega_0 t) + B \omega_0 \cos(\omega_0 t)\right) \]
+            Dado que $U = \mathbb{R}^3$, para cualquier valor $t \in I = \mathbb{R}$, el vector $\vec{v}(t) \in \mathbb{R}^3 = U$. Por lo tanto, $\vec{v}(t) \in U, \forall t \in I$.
+            
+            \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d^2}{dt^2}\gamma(t) = \vec{F}(\vec{v}(t))$):}
+            \begin{itemize}[leftmargin=*]
+                \item \textbf{Lado Izquierdo (derivada de orden $k=2$):}
+                \[ \frac{d^2}{dt^2}\gamma(t) = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
+                \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}
+                \[ \vec{F}(\vec{v}(t)) = \vec{F}\left(t, \gamma(t), \gamma'(t)\right) = -\omega_0^2 \gamma(t) = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
+                \item \textbf{Identidad:}
+                \[ -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
+            \end{itemize}
+        \end{itemize}
+
+        \vspace{0.3cm}
+        \noindent La función $\gamma(t) = A \cos(\omega_0 t) + B \sin(\omega_0 t)$ satisface rigurosamente las condiciones (i, ii y iii) de la definición formal, demostrando que es una solución explícita de clase $C^2$ en el intervalo abierto $I = \mathbb{R}$ para la EDO del oscilador armónico sin amortiguamiento.
+        % \begin{figure}[H]
+        %     \centering
+        %     \includegraphics[width=0.8\linewidth]{1image.png}
+        % \end{figure}
+
+        % \begin{figure}[H]
+        %     \centering
+        %     \includegraphics[width=0.8\linewidth]{2image.png}
+        % \end{figure}
+
+        % \begin{figure}[H]
+        %     \centering
+        %     \includegraphics[width=0.8\linewidth]{3image.png}
+        % \end{figure}
+
         \item Caso sub-amortiguado, $\gamma<\omega_{0}$, $0<\zeta<1$.
         \begin{equation*}
             \omega_{d}=\sqrt{\omega_{0}^{2}-\gamma^{2}} \tag{2}
@@ -39,15 +123,216 @@
         \begin{equation*}
             x(t)=e^{-\gamma t}[A \cos(\omega_{d}t)+B \sin(\omega_{d}t)] \tag{3}
         \end{equation*}
+
+        \subsection{Solución}
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Parámetros del caso:} $\gamma < \omega_0$ y $0 < \zeta < 1$.
+            
+            \item \textbf{Ecuación Diferencial:}
+            \[ \frac{d^2x}{dt^2} + 2\gamma\frac{dx}{dt} + \omega_0^2 x = 0 \]
+            
+            \item \textbf{Expresión en forma normal ($k = 2$):}
+            \[ \frac{d^2x}{dt^2} = -2\gamma\frac{dx}{dt} - \omega_0^2 x \]
+            
+            \item \textbf{Elementos formales:}
+            \begin{itemize}[leftmargin=*]
+                \item \textbf{Orden de la EDO ($k$):} $k = 2$ (segundo orden).
+                \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $\gamma: I \to \mathbb{R}^1$).
+                \item \textbf{Función $\vec{F}$ y dominio $U$:} La función del lado derecho es $\vec{F}(t, x, x') = -2\gamma x' - \omega_0^2 x$, definida sobre el conjunto abierto $U = \mathbb{R}^3$.
+                \item \textbf{Función propuesta:} $\gamma(t) = e^{-\gamma t}[A \cos(\omega_d t) + B \sin(\omega_d t)]$, donde la frecuencia angular amortiguada es $\omega_d = \sqrt{\omega_0^2 - \gamma^2}$.
+            \end{itemize}
+        \end{itemize}
+
+        \subsubsection*{Verificación de las Condiciones}
+
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Regularidad $C^k$ ($C^2$):}\\
+            Para simplificar la notación de las derivadas, definimos la parte oscilatoria como $u(t) = A \cos(\omega_d t) + B \sin(\omega_d t)$. Sabemos por el inciso anterior que su segunda derivada es $u''(t) = -\omega_d^2 u(t)$.\\
+            Nuestra función propuesta es $\gamma(t) = e^{-\gamma t}u(t)$. Calculamos sus derivadas:
+            \begin{enumerate}[label=\arabic*., leftmargin=*]
+                \item \textbf{Primera derivada (Regla del producto):}
+                \[ \frac{d}{dt}\gamma(t) = e^{-\gamma t}[u'(t) - \gamma u(t)] \]
+                \item \textbf{Segunda derivada (Regla del producto):}
+                \[ \frac{d^2}{dt^2}\gamma(t) = -\gamma e^{-\gamma t}[u'(t) - \gamma u(t)] + e^{-\gamma t}[u''(t) - \gamma u'(t)] \]
+            \end{enumerate}
+            Agrupando términos y factorizando $e^{-\gamma t}$:
+            \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ \gamma^2 u(t) - 2\gamma u'(t) + u''(t) ] \]
+            Sustituyendo $u''(t) = -\omega_d^2 u(t)$:
+            \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ (\gamma^2 - \omega_d^2)u(t) - 2\gamma u'(t) ] \]
+            Como $\omega_d^2 = \omega_0^2 - \gamma^2$, sabemos que $\gamma^2 - \omega_d^2 = 2\gamma^2 - \omega_0^2$. Sustituyendo esto último:
+            \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
+            Dado que las funciones exponenciales y trigonométricas son de clase $C^\infty$ en todo $\mathbb{R}$, la función $\gamma(t)$ es rigurosamente de clase $C^2(I)$.
+
+            \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
+            Definimos el intervalo abierto como $I = (-\infty, \infty) = \mathbb{R}$.
+
+            \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(t) \in U, \forall t \in I$):}\\
+            El vector de estado para $k=2$ es:
+            \[ \vec{v}(t) = \left(t, \gamma(t), \frac{d}{dt}\gamma(t)\right) \]
+            Puesto que $U = \mathbb{R}^3$, el vector $\vec{v}(t)$ pertenece a $U$ para cualquier instante $t \in \mathbb{R}$.
+
+            \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d^2}{dt^2}\gamma(t) = \vec{F}(\vec{v}(t))$):}
+            \begin{itemize}[leftmargin=*]
+                \item \textbf{Lado Izquierdo (derivada de orden $k=2$):}
+                \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
+                \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
+                Evaluamos la función $\vec{F}$ en nuestro vector de estado:
+                \[ \vec{F}(\vec{v}(t)) = -2\gamma \gamma'(t) - \omega_0^2 \gamma(t) \]
+                Sustituimos $\gamma(t)$ y $\gamma'(t)$:
+                \[ \vec{F}(\vec{v}(t)) = -2\gamma \left( e^{-\gamma t}[u'(t) - \gamma u(t)] \right) - \omega_0^2 \left( e^{-\gamma t}u(t) \right) \]
+                Factorizamos $e^{-\gamma t}$:
+                \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ -2\gamma u'(t) + 2\gamma^2 u(t) - \omega_0^2 u(t) ] \]
+                Agrupando los términos que multiplican a $u(t)$:
+                \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
+                \item \textbf{Identidad:}
+                \[ e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
+            \end{itemize}
+        \end{itemize}
+
+        \vspace{0.3cm}
+        \noindent La igualdad se cumple de manera exacta para todo $t \in \mathbb{R}$. La función $\gamma(t) = e^{-\gamma t}[A \cos(\omega_d t) + B \sin(\omega_d t)]$ satisface las tres condiciones de la definición formal, comprobando que es solución explícita para la EDO del oscilador armónico sub-amortiguado.
+        
         \item Amortiguamiento crítico, $\gamma=\omega_{0}$, $0<\zeta<1$.
         \begin{equation*}
             x(t)=(A+Bt)e^{-\gamma t} \tag{4}
         \end{equation*}
+
+        \subsection{Solución}
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Parámetros del caso:} $\gamma = \omega_0$.
+            
+            \item \textbf{Ecuación Diferencial:}\\
+            Como $\gamma = \omega_0$, sustituimos $\omega_0^2$ por $\gamma^2$ en la ecuación original para simplificar la comprobación:
+            \[ \frac{d^2x}{dt^2} + 2\gamma\frac{dx}{dt} + \gamma^2 x = 0 \]
+            
+            \item \textbf{Expresión en forma normal ($k = 2$):}
+            \[ \frac{d^2x}{dt^2} = -2\gamma\frac{dx}{dt} - \gamma^2 x \]
+            
+            \item \textbf{Elementos formales:}
+            \begin{itemize}[leftmargin=*]
+                \item \textbf{Orden de la EDO ($k$):} $k = 2$ (segundo orden).
+                \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $x: I \to \mathbb{R}^1$).
+                \item \textbf{Función $\vec{F}$ y dominio $U$:} La función es $\vec{F}(t, x, x') = -2\gamma x' - \gamma^2 x$, la cual está definida de manera continua sobre el conjunto abierto $U = \mathbb{R}^3$.
+                \item \textbf{Función propuesta:} $x(t) = (A + Bt)e^{-\gamma t}$, donde $A, B \in \mathbb{R}$ son las constantes determinadas por las condiciones iniciales.
+            \end{itemize}
+        \end{itemize}
+
+        \vspace{0.3cm}
+        \noindent\textbf{Verificación de las Condiciones}
+
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Regularidad $C^k$ ($C^2$):}\\
+            Calculamos las dos primeras derivadas de la función propuesta $x(t) = (A + Bt)e^{-\gamma t}$:
+            \begin{enumerate}[label=\arabic*., leftmargin=*]
+                \item \textbf{Primera derivada (Regla del producto):}
+                \[ \frac{d}{dt}x(t) = B e^{-\gamma t} - \gamma(A + Bt)e^{-\gamma t} \]
+                Factorizamos $e^{-\gamma t}$:
+                \[ \frac{d}{dt}x(t) = e^{-\gamma t} [ B - \gamma A - \gamma B t ] \]
+                
+                \item \textbf{Segunda derivada (Regla del producto aplicada al paso anterior):}
+                \[ \frac{d^2}{dt^2}x(t) = -\gamma B e^{-\gamma t} - \gamma e^{-\gamma t} [ B - \gamma A - \gamma B t ] \]
+                Agrupando y factorizando $e^{-\gamma t}$:
+                \[ \frac{d^2}{dt^2}x(t) = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
+            \end{enumerate}
+            Dado que los polinomios algebraicos y las funciones exponenciales son suaves e infinitamente diferenciables ($C^\infty$) en todo $\mathbb{R}$, se cumple rigurosamente que $x(t)$ es de clase $C^2(I)$.
+
+            \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
+            Definimos nuestro intervalo temporal como toda la recta real, $I = (-\infty, \infty) = \mathbb{R}$.
+
+            \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(t) \in U, \forall t \in I$):}\\
+            Construimos el vector de estado para $k=2$:
+            \[ \vec{v}(t) = \left(t, x(t), \frac{d}{dt}x(t)\right) \]
+            Dado que $t$, $x(t)$ y su derivada arrojan valores reales bien definidos para cualquier $t$, el vector $\vec{v}(t)$ pertenece inequívocamente al dominio $U = \mathbb{R}^3$ para todo instante $t \in I$.
+
+            \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d^2}{dt^2}x(t) = \vec{F}(\vec{v}(t))$):}
+            \begin{itemize}[leftmargin=*]
+                \item \textbf{Lado Izquierdo (derivada de orden $k=2$ previamente calculada):}
+                \[ \frac{d^2}{dt^2}x(t) = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
+                
+                \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
+                Evaluamos la función normalizada $\vec{F}$ sustituyendo $x(t)$ y $x'(t)$:
+                \[ \vec{F}(\vec{v}(t)) = -2\gamma \left( e^{-\gamma t} [ B - \gamma A - \gamma B t ] \right) - \gamma^2 \left( (A + Bt)e^{-\gamma t} \right) \]
+                Factorizamos el término $e^{-\gamma t}$ común a ambas expresiones:
+                \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ -2\gamma B + 2\gamma^2 A + 2\gamma^2 B t - \gamma^2 A - \gamma^2 B t ] \]
+                Reducimos los términos algebraicos semejantes dentro del corchete ($2\gamma^2 A - \gamma^2 A$ y $2\gamma^2 B t - \gamma^2 B t$):
+                \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
+                
+                \item \textbf{Identidad:}
+                \[ e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
+            \end{itemize}
+        \end{itemize}
+
+        \vspace{0.3cm}
+        \noindent La igualdad analítica se cumple de forma exacta, lo que comprueba formalmente que $x(t) = (A + Bt)e^{-\gamma t}$ es una solución de la EDO para el oscilador armónico críticamente amortiguado.
         \item Caso sobre-amortiguado, $\gamma>\omega_{0}$, $\zeta>1$.
         \[ x(t)=Ae^{-\alpha_{1}t}+Be^{-\alpha_{2}t} \]
         \begin{equation*}
             \alpha_{1}=\gamma+\sqrt{\gamma^{2}-\omega_{0}^{2}} \quad \text{y} \quad \alpha_{2}=\gamma-\sqrt{\gamma^{2}-\omega_{0}^{2}}. \tag{5}
         \end{equation*}
+
+        \subsection{Solución}
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Parámetros del caso:} $\gamma > \omega_0$ y $\zeta > 1$.
+            
+            \item \textbf{Ecuación Diferencial:}
+            \[ \frac{d^2x}{dt^2} + 2\gamma\frac{dx}{dt} + \omega_0^2 x = 0 \]
+            
+            \item \textbf{Expresión en forma normal ($k = 2$):}
+            \[ \frac{d^2x}{dt^2} = -2\gamma\frac{dx}{dt} - \omega_0^2 x \]
+            
+            \item \textbf{Elementos formales:}
+            \begin{itemize}[leftmargin=*]
+                \item \textbf{Orden de la EDO ($k$):} $k = 2$ (segundo orden).
+                \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $x: I \to \mathbb{R}^1$).
+                \item \textbf{Función $\vec{F}$ y dominio $U$:} La función $\vec{F}(t, x, x') = -2\gamma x' - \omega_0^2 x$ está bien definida y es continua en el dominio abierto $U = \mathbb{R}^3$.
+                \item \textbf{Función propuesta:} $x(t) = A e^{-\alpha_1 t} + B e^{-\alpha_2 t}$, donde las constantes asociadas a las raíces del polinomio característico son $\alpha_1 = \gamma + \sqrt{\gamma^2 - \omega_0^2}$ y $\alpha_2 = \gamma - \sqrt{\gamma^2 - \omega_0^2}$.
+            \end{itemize}
+        \end{itemize}
+
+        \subsubsection{Verificación Paso a Paso de las Condiciones Formales}
+
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Regularidad $C^k$ ($C^2$):}\\
+            Calculamos las derivadas sucesivas de la función propuesta $x(t) = A e^{-\alpha_1 t} + B e^{-\alpha_2 t}$:
+            \begin{enumerate}[label=\arabic*., leftmargin=*]
+                \item \textbf{Primera derivada:}
+                \[ \frac{d}{dt}x(t) = -A\alpha_1 e^{-\alpha_1 t} - B\alpha_2 e^{-\alpha_2 t} \]
+                \item \textbf{Segunda derivada:}
+                \[ \frac{d^2}{dt^2}x(t) = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
+            \end{enumerate}
+            Al estar conformada por la suma de dos funciones exponenciales reales, las cuales son infinitamente diferenciables ($C^\infty$) en cualquier instante del tiempo, la función $x(t)$ pertenece invariablemente a la clase $C^2(I)$.
+
+            \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
+            Tomamos como intervalo de existencia toda la recta real, es decir, $I = (-\infty, \infty) = \mathbb{R}$.
+
+            \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(t) \in U, \forall t \in I$):}\\
+            Construimos el vector de estado para $k=2$:
+            \[ \vec{v}(t) = \left(t, x(t), \frac{d}{dt}x(t)\right) \]
+            Dado que el tiempo, la posición $x(t)$ y la velocidad $x'(t)$ son números reales escalares, el vector ordenado $\vec{v}(t)$ pertenece a $U = \mathbb{R}^3$ para todo valor de $t \in \mathbb{R}$.
+
+            \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d^2}{dt^2}x(t) = \vec{F}(\vec{v}(t))$):}
+            \begin{itemize}[leftmargin=*]
+                \item \textbf{Lado Izquierdo (derivada de orden $k=2$ calculada previamente):}
+                \[ \frac{d^2}{dt^2}x(t) = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
+                
+                \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
+                Evaluamos la función $\vec{F}$ empleando $x(t)$ y $x'(t)$:
+                \[ \vec{F}(\vec{v}(t)) = -2\gamma \left( -A\alpha_1 e^{-\alpha_1 t} - B\alpha_2 e^{-\alpha_2 t} \right) - \omega_0^2 \left( A e^{-\alpha_1 t} + B e^{-\alpha_2 t} \right) \]
+                Agrupamos los términos de acuerdo a sus factores exponenciales correspondientes $A e^{-\alpha_1 t}$ y $B e^{-\alpha_2 t}$:
+                \[ \vec{F}(\vec{v}(t)) = A e^{-\alpha_1 t}(2\gamma\alpha_1 - \omega_0^2) + B e^{-\alpha_2 t}(2\gamma\alpha_2 - \omega_0^2) \]
+                
+                \textit{(Para facilitar la demostración, notemos una propiedad de $\alpha_1$ y $\alpha_2$. Si elevamos $\alpha_1$ al cuadrado obtenemos $\alpha_1^2 = (\gamma + \sqrt{\gamma^2 - \omega_0^2})^2 = \gamma^2 + 2\gamma\sqrt{\gamma^2 - \omega_0^2} + \gamma^2 - \omega_0^2 = 2\gamma^2 + 2\gamma\sqrt{\gamma^2 - \omega_0^2} - \omega_0^2$. Sabiendo que $2\gamma\alpha_1 = 2\gamma^2 + 2\gamma\sqrt{\gamma^2 - \omega_0^2}$, podemos deducir que \textbf{$\alpha_1^2 = 2\gamma\alpha_1 - \omega_0^2$}. El mismo desarrollo exacto aplica para $\alpha_2$.)}
+
+                Sustituyendo la identidad algebraica descrita anteriormente ($\alpha^2 = 2\gamma\alpha - \omega_0^2$), la expresión se simplifica a:
+                \[ \vec{F}(\vec{v}(t)) = A e^{-\alpha_1 t}(\alpha_1^2) + B e^{-\alpha_2 t}(\alpha_2^2) = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
+                
+                \item \textbf{Identidad:}
+                \[ A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
+            \end{itemize}
+        \end{itemize}
+
+        \vspace{0.3cm}
+        \noindent La identidad se satisface exactamente. De esta manera, demostramos que $x(t) = A e^{-\alpha_1 t} + B e^{-\alpha_2 t}$ es, en efecto, una solución de clase $C^2$ a la EDO del sistema en el caso de oscilación sobre-amortiguada.
     \end{enumerate}
 
     \item \textbf{Dinámica Poblacional con Factor (capacidad) de Carga. Ecuación Logística o de Verhulst}
