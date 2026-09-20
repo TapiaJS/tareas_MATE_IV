@@ -675,4 +675,79 @@
         x(t) &= e^{-t}[3c_{1}\cos(\sqrt{6}t)+3c_{2}\sin(\sqrt{6}t)] \\
         y(t) &= e^{-t}[\sqrt{6}c_{1}\sin(\sqrt{6}t)-\sqrt{6}c_{2}\cos(\sqrt{6}t)]
     \end{align*}
+
+    \subsection*{Solución}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Ecuación Diferencial:}
+        \begin{align*}
+            x' &= -x - 3y \\
+            y' &= 2x - y
+        \end{align*}
+        
+        \item \textbf{Elementos formales:}
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Orden del Sistema ($k$):} $k = 1$ (primer orden, ya que solo hay primeras derivadas).
+            \item \textbf{Dimensión del espacio ($d$):} $d = 2$. Aquí tenemos un sistema acoplado con dos variables dependientes ($x$ e $y$) que evolucionan respecto al tiempo $t$. La curva solución es un vector $\gamma: I \to \mathbb{R}^2$ tal que $\gamma(t) = (x(t), y(t))$.
+            \item \textbf{Función $\vec{F}$ y dominio $U$:} La dinámica del sistema está dictada por el campo vectorial $\vec{F}(t, x, y) = (-x - 3y, \ 2x - y)$. Al ser polinomios lineales, la función es continua en todo el espacio tridimensional abierto $U = \mathbb{R}^3$.
+            \item \textbf{Funciones propuestas:}
+            \begin{align*}
+                x(t) &= e^{-t}[3c_1\cos(\sqrt{6}t) + 3c_2\sin(\sqrt{6}t)] \\
+                y(t) &= e^{-t}[\sqrt{6}c_1\sin(\sqrt{6}t) - \sqrt{6}c_2\cos(\sqrt{6}t)]
+            \end{align*}
+        \end{itemize}
+    \end{itemize}
+
+    \subsubsection*{Verificación de las Condiciones}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Regularidad $C^k$ ($C^1$):}\\
+        Ambas funciones $x(t)$ y $y(t)$ están compuestas por combinaciones lineales de productos entre funciones exponenciales ($e^{-t}$) y trigonométricas ($\sin$, $\cos$). Dado que estas funciones elementales son infinitamente diferenciables ($C^\infty$) en todos los números reales, la curva vectorial $\gamma(t)$ es de clase $C^1$.
+
+        \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
+        Como no hay denominadores que se anulen ni logaritmos o raíces pares problemáticas, el intervalo abierto de existencia es toda la recta real $I = (-\infty, \infty) = \mathbb{R}$.
+
+        \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(t) \in U, \forall t \in I$):}\\
+        Construimos el vector de estado para $k=1$:
+        \[ \vec{v}(t) = (t, \gamma(t)) = (t, x(t), y(t)) \]
+        Dado que $U = \mathbb{R}^3$, el vector de estado existe y pertenece invariablemente al dominio $U$ para cualquier instante $t \in I$.
+
+        \item \textbf{Condición iii) Satisfacción de la ecuación ($\gamma'(t) = \vec{F}(\vec{v}(t))$):}\\
+        Para simplificar el cálculo de las derivadas, definamos las partes trigonométricas de las funciones como $u(t)$ y $v(t)$:
+        \begin{itemize}[leftmargin=*]
+            \item $u(t) = 3c_1\cos(\sqrt{6}t) + 3c_2\sin(\sqrt{6}t) \implies x(t) = e^{-t}u(t)$
+            \item $v(t) = \sqrt{6}c_1\sin(\sqrt{6}t) - \sqrt{6}c_2\cos(\sqrt{6}t) \implies y(t) = e^{-t}v(t)$
+        \end{itemize}
+        
+        Observemos una propiedad calculando las derivadas de $u(t)$ y $v(t)$ usando la regla de la cadena para el argumento $\sqrt{6}t$:
+        \begin{enumerate}[label=\arabic*., leftmargin=*]
+            \item $u'(t) = -3\sqrt{6}c_1\sin(\sqrt{6}t) + 3\sqrt{6}c_2\cos(\sqrt{6}t) = -3(\sqrt{6}c_1\sin(\sqrt{6}t) - \sqrt{6}c_2\cos(\sqrt{6}t))$.\\
+            Es decir, \textbf{$u'(t) = -3v(t)$}.
+            
+            \item $v'(t) = 6c_1\cos(\sqrt{6}t) + 6c_2\sin(\sqrt{6}t) = 2(3c_1\cos(\sqrt{6}t) + 3c_2\sin(\sqrt{6}t))$.\\
+            Es decir, \textbf{$v'(t) = 2u(t)$}.
+        \end{enumerate}
+
+        Ahora, derivamos $x(t)$ y $y(t)$ usando la regla del producto y sustituimos estas identidades:
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Derivada de $x(t)$:}
+            \[ x'(t) = -e^{-t}u(t) + e^{-t}u'(t) \]
+            Sustituimos $u'(t) = -3v(t)$:
+            \[ x'(t) = -e^{-t}u(t) - 3e^{-t}v(t) \]
+            Reconociendo las funciones originales ($x(t) = e^{-t}u(t)$ y $y(t) = e^{-t}v(t)$):
+            \[ x'(t) = -x(t) - 3y(t) \]
+            \textit{Esta expresión es idéntica a la primera ecuación del sistema ($x' = -x - 3y$).}
+            
+            \item \textbf{Derivada de $y(t)$:}
+            \[ y'(t) = -e^{-t}v(t) + e^{-t}v'(t) \]
+            Sustituimos $v'(t) = 2u(t)$:
+            \[ y'(t) = -e^{-t}v(t) + 2e^{-t}u(t) \]
+            Reconociendo las funciones originales y reordenando ($x(t) = e^{-t}u(t)$ y $y(t) = e^{-t}v(t)$):
+            \[ y'(t) = -y(t) + 2x(t) = 2x(t) - y(t) \]
+            \textit{Esta expresión es idéntica a la segunda ecuación del sistema ($y' = 2x - y$).}
+        \end{itemize}
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \noindent Las derivadas de las funciones propuestas coinciden con el campo vectorial del sistema. Por lo que, hemos demostrado que ambas funciones acopladas son la solución general de la EDO.
 \end{enumerate}
