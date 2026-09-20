@@ -546,6 +546,69 @@
     \[ \frac{dz}{dt}+z=z^{2} \]
     Función:
     \[ z(t)=\frac{1}{1+Ce^{t}} \]
+    \subsection*{Solución}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Ecuación Diferencial:}
+        \[ \frac{dz}{dt} + z = z^2 \]
+        
+        \item \textbf{Expresión en forma normal ($k = 1$):}
+        \[ \frac{dz}{dt} = z^2 - z \]
+        
+        \item \textbf{Elementos formales:}
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Orden de la EDO ($k$):} $k = 1$ (primer orden).
+            \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $\gamma: I \to \mathbb{R}^1$).
+            \item \textbf{Función $\vec{F}$ y dominio $U$:} La función que define la dinámica es $\vec{F}(t, z) = z^2 - z$, la cual está definida de forma continua sobre el conjunto abierto $U = \mathbb{R}^2$.
+            \item \textbf{Función propuesta:} $\gamma(t) = \frac{1}{1 + Ce^t}$, donde $C$ es una constante real arbitraria.
+        \end{itemize}
+    \end{itemize}
+
+    \subsubsection*{Verificación de las Condiciones}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Regularidad $C^k$ ($C^1$):}\\
+        Reescribimos la función propuesta usando exponentes negativos para facilitar su derivación mediante la regla de la cadena: $\gamma(t) = (1 + Ce^t)^{-1}$.\\
+        Calculamos su primera derivada con respecto al tiempo:
+        \begin{align*}
+            \frac{d}{dt}\gamma(t) &= -1(1 + Ce^t)^{-2} \cdot \frac{d}{dt}(1 + Ce^t) \\
+            \frac{d}{dt}\gamma(t) &= -1(1 + Ce^t)^{-2} \cdot (Ce^t) \\
+            \frac{d}{dt}\gamma(t) &= \frac{-Ce^t}{(1 + Ce^t)^2}
+        \end{align*}
+        Mientras el denominador no se anule, esta función exponencial es infinitamente diferenciable ($C^\infty$), lo que garantiza que es de clase $C^1$.
+
+        \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
+        El dominio temporal depende del valor de la constante $C$. Para evitar la división por cero, requerimos que $1 + Ce^t \neq 0$, es decir, $Ce^t \neq -1$. \\
+        Si elegimos un $C \geq 0$, el denominador nunca será cero y el intervalo abierto es toda la recta real $I = (-\infty, \infty) = \mathbb{R}$. Si $C < 0$, el intervalo abierto se restringe a los valores donde $t \neq \ln(-1/C)$. En cualquiera de los casos, existe un intervalo abierto válido $I$.
+
+        \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(t) \in U, \forall t \in I$):}\\
+        Construimos el vector de estado para $k=1$:
+        \[ \vec{v}(t) = (t, \gamma(t)) \]
+        Dado que $U = \mathbb{R}^2$, el vector $\vec{v}(t)$ pertenece a $U$ para cualquier instante $t \in I$ en el que la función esté bien definida.
+
+        \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d}{dt}\gamma(t) = \vec{F}(\vec{v}(t))$):}
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Lado Izquierdo (derivada previamente calculada):}
+            \[ \frac{d}{dt}\gamma(t) = \frac{-Ce^t}{(1 + Ce^t)^2} \]
+            
+            \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
+            Evaluamos la función en forma normal sustituyendo $\gamma(t)$:
+            \begin{align*}
+                \vec{F}(\vec{v}(t)) &= [\gamma(t)]^2 - \gamma(t) \\
+                \vec{F}(\vec{v}(t)) &= \left( \frac{1}{1 + Ce^t} \right)^2 - \left( \frac{1}{1 + Ce^t} \right)
+            \end{align*}
+            Para restar estas fracciones, encontramos el denominador común $(1 + Ce^t)^2$:
+            \[ \vec{F}(\vec{v}(t)) = \frac{1}{(1 + Ce^t)^2} - \frac{1 + Ce^t}{(1 + Ce^t)^2} \]
+            Restamos los numeradores directamente:
+            \[ \vec{F}(\vec{v}(t)) = \frac{1 - (1 + Ce^t)}{(1 + Ce^t)^2} = \frac{1 - 1 - Ce^t}{(1 + Ce^t)^2} = \frac{-Ce^t}{(1 + Ce^t)^2} \]
+            
+            \item \textbf{Identidad:}
+            \[ \frac{-Ce^t}{(1 + Ce^t)^2} = \frac{-Ce^t}{(1 + Ce^t)^2} \]
+        \end{itemize}
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \noindent Por lo tanto, hemos demostrado que la función $z(t) = \frac{1}{1+Ce^t}$ es efectivamente una solución de la Ecuación de Bernoulli.
 
     \item \textbf{EDO Exacta.}
     \[ x(2x^{2}+y^{2})+y(x^{2}+2y^{2})y^{\prime}=0 \]
