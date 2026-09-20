@@ -607,13 +607,63 @@
         \end{itemize}
     \end{itemize}
 
-    \vspace{0.3cm}
     \noindent Por lo tanto, hemos demostrado que la función $z(t) = \frac{1}{1+Ce^t}$ es efectivamente una solución de la Ecuación de Bernoulli.
 
     \item \textbf{EDO Exacta.}
     \[ x(2x^{2}+y^{2})+y(x^{2}+2y^{2})y^{\prime}=0 \]
     Función:
     \[ \frac{1}{2}(x^{4}+x^{2}y^{2}+y^{4})=k \]
+
+    \subsection*{Solución}
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Ecuación Diferencial:}
+        \[ x(2x^2+y^2) + y(x^2+2y^2)y' = 0 \]
+        
+        \item \textbf{Expresión en forma normal ($k = 1$):}
+        \[ y' = -\frac{x(2x^2+y^2)}{y(x^2+2y^2)} \]
+        
+        \item \textbf{Elementos formales:}
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{Orden de la EDO ($k$):} $k = 1$ (primer orden).
+            \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar donde $y$ es función de $x$).
+            \item \textbf{Función $\vec{F}$ y dominio $U$:} La función $\vec{F}(x, y) = -\frac{x(2x^2+y^2)}{y(x^2+2y^2)}$ está definida en el dominio abierto $U = \mathbb{R}^2 \setminus \{(x,y) \mid y(x^2+2y^2) = 0\}$, es decir, se indefine si el denominador es cero.
+            \item \textbf{Función propuesta:} $\frac{1}{2}(x^4 + x^2y^2 + y^4) = k$, la cual define a la solución $y(x)$ de manera implícita.
+        \end{itemize}
+    \end{itemize}
+
+    \subsubsection*{Verificación de las Condiciones}
+
+    Dado que la función no está despejada para $y$ explícitamente, utilizaremos la regla de derivación implícita con respecto a $x$ sobre toda la ecuación propuesta para verificar la condición iii).
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Regularidad $C^k$ y Condición i) Intervalo abierto:}\\
+        La solución es una curva algebraica conformada por polinomios continuos. Por el Teorema de la Función Implícita, $y(x)$ será una función de clase $C^\infty$ (y por ende $C^1$) en cualquier intervalo abierto $I$ donde la derivada parcial respecto a $y$ no se anule (es decir, fuera de las singularidades geométricas de la curva).
+
+        \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(x) \in U, \forall x \in I$):}\\
+        El vector de estado para $k=1$ es $\vec{v}(x) = (x, y(x))$. Siempre que restrinjamos nuestro intervalo $I$ para evadir los puntos donde $y(x^2+2y^2) = 0$, el vector $\vec{v}(x)$ pertenecerá al dominio $U$.
+
+        \item \textbf{Condición iii) Satisfacción de la ecuación ($y'(x) = \vec{F}(\vec{v}(x))$):}\\
+        Derivamos ambos lados de la función propuesta $\frac{1}{2}(x^4 + x^2y^2 + y^4) = k$ con respecto a $x$, aplicando la regla de la cadena para los términos con $y$:
+        \begin{align*}
+            \frac{d}{dx} \left[ \frac{1}{2}(x^4 + x^2y^2 + y^4) \right] &= \frac{d}{dx} [k] \\
+            \frac{1}{2} \left[ 4x^3 + \left(2xy^2 + x^2(2yy')\right) + 4y^3y' \right] &= 0
+        \end{align*}
+        
+        Multiplicamos el factor $\frac{1}{2}$ por todos los términos dentro del corchete:
+        \[ 2x^3 + xy^2 + x^2yy' + 2y^3y' = 0 \]
+        
+        Agrupamos los términos que no contienen $y'$ y factorizamos $y'$ en los que sí lo contienen:
+        \[ (2x^3 + xy^2) + (x^2y + 2y^3)y' = 0 \]
+        
+        Extraemos factores comunes $x$ en el primer bloque y $y$ en el segundo bloque:
+        \[ x(2x^2 + y^2) + y(x^2 + 2y^2)y' = 0 \]
+        
+        Si despejamos $y'$ para evaluar la identidad de la forma normal, obtenemos exactamente el campo de pendientes original:
+        \[ y' = -\frac{x(2x^2+y^2)}{y(x^2+2y^2)} \]
+    \end{itemize}
+
+    \noindent Por lo tanto, hemos demostrado que la función $x(2x^2+y^2) + y(x^2+2y^2)y' = 0$ es efectivamente una solución de la EDO Exacta.
 
     \item \textbf{Sistema de EDO.} Sean $x(t)$, $y(t)$, tal que:
     \begin{align*}
