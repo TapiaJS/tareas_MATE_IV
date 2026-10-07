@@ -1,0 +1,86 @@
+% ============================================================
+% Sección 5
+% ============================================================
+\section{5 EDO Homogénea-Separable}
+
+\begin{tcolorbox}[enunciado]
+Los cambios de variable en las ecuaciones diferenciales para transformar la forma en que está expresada una, logrando así facilitar su resolución son de lo más común, no obstante si procedemos con detalle, descubriremos que no todas las transformaciones llevan mi sistema original a un sistema equivalente. En esta sección reflexionaremos de una manera muy básica al respecto además de resolver un ejemplo práctico.
+
+\vspace{0.2cm}
+\textbf{Clase:}
+\begin{itemize}[leftmargin=*]
+    \item EDO Separable y Homogénea 9Sep26 MCA4
+    \item Ejemplo Sol EDO Homogénea-Separable parte 1 MCA4 14Sep26
+    \item Clase Notas 21 de Sep
+\end{itemize}
+
+\textbf{Código:}
+\begin{itemize}[leftmargin=*]
+    \item Web Mathematica: \texttt{MCA4\_EDOs\_1er\_Orden.nb}
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{ACTIVIDADES}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item Da la definición de ED Homogénea dada en clase el 9 de Septiembre.
+    \subsection*{Solución}
+    % Escribe tu respuesta aquí
+
+    \item \textbf{Transformación no equivalente.} \\
+    En las clases del 14 y 21 de Sep se resolvió la EDO:
+    \[ \frac{dy}{dx} = \frac{y-4x}{x-y} \]
+
+    \item Por las gráficas para las distintas regiones que se obtienen con la transformación $u$ y directamente para $y$-$x$, ¿consideras que la transformación es equivalente?
+    \subsection*{Solución}
+    % Escribe tu respuesta aquí
+
+    \item Cuando usamos la transformación $u=y/x$ pedimos $x \neq 0$. ¿Las soluciones realmente no pasan por la recta $x=0$? Ve la gráfica del código en Wolfram Mathematica.
+    \subsection*{Solución}
+    % Escribe tu respuesta aquí
+
+    \item \textbf{Escalabilidad de Ancho de Banda en Enrutamiento Dinámico}
+
+    En el diseño de redes troncales (\textit{backbone}), se analiza cómo crece el tráfico total de datos ($Y$) en función de la capacidad de infraestructura instalada ($X$). En un modelo de saturación balanceada, la tasa de cambio del tráfico respecto a la infraestructura depende estrictamente de la proporción actual entre ambas variables, reflejando la eficiencia del enrutamiento dinámico.
+
+    La ecuación de diseño es:
+    \[ \frac{dY}{dX} = \frac{X^{2}+Y^{2}}{XY} \]
+    con $Y \equiv Y(X)$. Responde:
+
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Muestra que la ED es homogénea, i.e.:
+        \[ f(KX, KY) = f(X, Y) \]
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿Cuál es una asíntota horizontal o línea de singularidad?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿Puntos singulares?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Bajo el cambio de variable:
+        \[ u = \frac{Y}{X} \]
+        transforma la EDO original en una separable y resuélvela.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Di qué condición cumple la constante resultante.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Regresa la expresión a las variables originales y expresa la función explícitamente para $Y(X)$.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿Por la recta $X=0$ pasa alguna solución?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Grafica una posible solución.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+\end{enumerate}

@@ -1,0 +1,99 @@
+% ============================================================
+% Sección 4
+% ============================================================
+\section{4 EDO Separable $y'(x)=f(x)g(y)$}
+
+\begin{tcolorbox}[enunciado]
+Uno de los más comunes equívocos a la hora de dar la solución de la ecuación diferencial es conformarse con la función, ya sea en su forma explícita o implícita, que se obtiene del proceso analítico y se omita considerar el dominio, sobre todo cuando la solución queda en forma implícita, algo que suele ser común en las ecuaciones diferenciales separables y como se verá después, en las exactas. En esta sección reflexionaremos un poco al respecto.
+
+\vspace{0.2cm}
+\textbf{Clase:}
+\begin{itemize}[leftmargin=*]
+    \item EDO Separable y Homogénea 9Sep26 MCA4
+    \item Ejemplo Sol EDO Homogénea-Separable parte 1 MCA4 14Sep26
+\end{itemize}
+
+\textbf{Clases (Apoyo Secundario):}
+\begin{itemize}[leftmargin=*]
+    \item Solución EDO con y sin unicidad 24Ago26 MCA4
+    \item Sol Equilibrio, Curva Integral, Campo Direccional 26 Ago 2026 MCA4
+\end{itemize}
+
+\textbf{Código:}
+\begin{itemize}[leftmargin=*]
+    \item Github: \texttt{1.1\_Campo\_Direccional\_y\_Curva\_Integral}
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{ACTIVIDADES}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item Da la definición de ED Separable dada en clase el 9 de Septiembre.
+    \subsection*{Solución}
+    % Escribe tu respuesta aquí
+
+    \item En las clases arriba mencionadas como de apoyo secundario y en la Actividad 1 sección 3.3, vimos la EDO:
+    \[ \frac{dy}{dx} = \frac{4-2x}{3y^{2}-5} \]
+    cuya función (ecuación) solución implícita es:
+    \[ y^{3}-5y+x^{2}-4x=c \]
+    ¡¡¡No Obstante!!! faltó dar su dominio, mismo que depende del valor de $c$ seleccionado (o la condición inicial $y(t_{0})=y_{0}$ seleccionada, que termina fijando el valor de $c$).
+
+    Reflexiona y Responde:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item \textbf{Reflexiona.} Ejecuta el código \texttt{Curvas\_Ec\_Sol\_EDO\_dy\_4-2x\_div\_3y2-5.py}. Ya te diste cuenta que los valores de $C$ no están dados al azar.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Considerando los valores donde $y'(x)$ no está definida, ¿se te ocurre cómo determinar el dominio? \\
+        \textbf{NOTA:} La respuesta formal para cada caso puede ser algo talachuda, pero aquí solo se pretende que esboces una idea coherente y breve.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Muestra que el discriminante para obtener los rangos del dominio, si piensas la solución implícita en términos de las raíces de $x$, es:
+        \[ h(y) = 5y + 4 + c - y^{3} \]
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+
+    \item \textbf{Propagación de un rumor en redes sociales con tasa de contacto decreciente}
+
+    Un rumor se propaga en una red social, pero la tasa de contacto disminuye con el tiempo porque los usuarios se cansan del tema. La tasa de propagación es inversamente proporcional a $1+t$.
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Ecuación Modelo:}
+        \[ \frac{dR}{dt} = \frac{\beta}{1+t}R(N-R) \]
+        donde:
+        \begin{itemize}[leftmargin=*]
+            \item $R(t)$: número de usuarios que conocen el rumor.
+            \item $N$: total de usuarios en la red.
+            \item $\beta > 0$: tasa de propagación inicial (adimensional).
+            \item $t$: tiempo (s).
+            \item $R(t_{0}) = R_{0}$: Condición inicial, donde lo usual es $t_{0}=0$.
+        \end{itemize}
+    \end{itemize}
+
+    Responde:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Da la solución analítica teórica (matemática), sin condición inicial.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Usando los valores y la condición inicial siguientes:
+        \[ N = 10000, \quad t_{0} = 0, \quad R_{0} = 10, \quad \beta = 0.001 \]
+        da la solución particular, a partir de la analítica antes obtenida.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Grafica la solución.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Según este modelo, ¿en qué momento la gente comienza a perder interés en el tema?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿Consideras que este modelo es realista? Si no es así, ¿en qué rango lo sería y qué debería considerarse?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+\end{enumerate}

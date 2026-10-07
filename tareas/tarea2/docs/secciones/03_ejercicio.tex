@@ -1,0 +1,233 @@
+% ============================================================
+% Sección 3
+% ============================================================
+\section{3 EDO Autónoma. $y'(x)=g(y)$}
+
+\begin{tcolorbox}[enunciado]
+Las EDO autónomas son un caso particular de las separables y se pueden resolver de manera análoga.
+
+\vspace{0.2cm}
+\textbf{Clase:}
+\begin{itemize}[leftmargin=*]
+    \item Análisis Cualitativo asíntotas y Sol Analítica, EDO Autónoma 7 Sep 2026 MCA4
+\end{itemize}
+
+\textbf{Código:}
+\begin{itemize}[leftmargin=*]
+    \item Github: \texttt{1.3.Sol\_Analitica\_Bifurcacion\_Node-Saddle\_dx\_mu-x2\_mu\_neg.py}
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{ACTIVIDADES}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item En la clase del 7 de Septiembre resolvimos analíticamente la EDO:
+    \[ x'(t) = \mu - x^{2} \]
+    para $\mu < 0$. Este es un modelo clásico de EDO autónoma con Bifurcación tipo Nodo-Silla, pues según el valor de $\mu$ las soluciones y el sistema presentan características diferentes.
+
+    Ahora considera el caso $\mu > 0$. Responde:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Da las soluciones de equilibrio.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Resuelve analíticamente, dando los dominios de cada solución y región (imagen) comprendida.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿Las soluciones que comienzan fuera de las de equilibrio, llegan a intersecar a alguna de las soluciones de equilibrio?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Utilizando el software \texttt{Sol\_Analitica\_Bifurcacion\_Node-Saddle\_dx\_mu-x2\_mu\_neg.py}, modifícalo para obtener:
+        \begin{itemize}[leftmargin=*]
+            \item La solución sin condiciones iniciales (ic).
+            \item Una solución con (ic), para cada una de las regiones en que separaron las soluciones de equilibrio el espacio.
+        \end{itemize}
+        \textbf{NOTA:} Eres libre de escoger las condiciones iniciales.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item La solución que obtuviste con el programa en el caso ``sin condiciones iniciales'', ¿a cuál equivale de las obtenidas analíticamente?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+
+    \item \textbf{Control de congestión TCP (Modelo de fluidos)}
+
+    En una red TCP, el tamaño de la ventana de congestión $W(t)$ crece linealmente y se reduce a la mitad cuando hay pérdidas. El modelo de fluidos de Misra et al. aproxima este comportamiento mediante una EDO que describe la evolución promedio de $W$.
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Ecuación Modelo:}
+        \[ \frac{dW}{dt} = \frac{1}{R} - \frac{W}{2R}p \]
+        donde $W(t)$: tamaño de la ventana TCP; $R$: RTT\footnote{RTT en Redes e Internet es el \textit{Round-Trip Time}. Es una métrica para medir latencia y rendimiento de una conexión a internet o una red local. Mide el tiempo exacto que pasa desde que un usuario envía un paquete de datos (como hacer clic en un enlace o cargar una página) hasta que el servidor responde y la información regresa al equipo de origen.}; $p$: probabilidad de pérdida. Se asume $R$ y $p$ constantes.
+        \item \textbf{Condición inicial:} $W(0) = W_{0}$.
+    \end{itemize}
+
+    Preguntas:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Halla $W(t)$.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Determine el valor de equilibrio $W^{*}$.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+
+    \item \textbf{Dinámica de un buffer de almacenamiento}
+
+    Un buffer recibe datos a una tasa $\lambda$ y los procesa a una tasa proporcional a su ocupación $\mu B$. Este modelo de flujo describe cómo varía la ocupación del buffer con el tiempo.
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Ecuación Modelo:}
+        \[ \frac{dB}{dt} = \lambda - \mu B \]
+        \item \textbf{Condición inicial:} $B(0) = B_{0}$.
+    \end{itemize}
+
+    Tomando los valores:
+    \[ \lambda = 250\text{ GB/s}, \quad \mu = 0.5\text{ s}^{-1}, \quad B_{0} = 50\text{ GB} \]
+    cuya interpretación es:
+
+    \vspace{0.3cm}
+    \begin{center}
+    \begin{tabular}{c l c}
+    \toprule
+    \textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+    \midrule
+    $B(t)$ & Ocupación del buffer en el tiempo $t$ & Megabytes (MB) \\
+    $\lambda$ & Tasa de llegada de datos & $\text{MB/s}$ \\
+    $\mu$ & Tasa de servicio por unidad de ocupación & $1/\text{s}$ \\
+    $B_{0}$ & Ocupación inicial del buffer & MB \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \vspace{0.3cm}
+
+    \begin{itemize}[leftmargin=*]
+        \item Llegan $250\text{ GB}$ por segundo al buffer.
+        \item El buffer procesa datos a una tasa de $0.5$ veces su ocupación actual (si tiene $20\text{ GB}$, procesa $10\text{ GB/s}$).
+        \item Inicialmente el buffer contiene $50\text{ GB}$.
+    \end{itemize}
+
+    Preguntas:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Halle la solución general $B(t)$.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Aplique la condición inicial $B(0) = 50\text{ GB}$ y obtenga la solución particular.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Determine el valor de equilibrio $B^{*}$. ¿Qué representa físicamente?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Calcule el tiempo que tarda el buffer en alcanzar el 90\% de su valor de equilibrio.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item \textbf{Condición de estabilidad:} ¿Para qué valores de $\lambda$ y $\mu$ el buffer se estabiliza? ¿Qué pasa si $\lambda$ es demasiado grande?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item \textbf{Interpretación física:} Si el buffer tiene un tamaño máximo $Q = 500\text{ GB}$, ¿se desborda con los valores dados? ¿En qué instante?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+
+    \item \textbf{Crecimiento de una base de datos distribuida}
+
+    Una base de datos distribuida crece conforme pasa el tiempo a la vez que elimina registros obsoletos en ella a lo largo de este. Una EDO muy simplificada que predice el cambio de tamaño en la base de datos a lo largo del tiempo se conoce como \textit{modelo logístico con cosecha} y se expresa mediante la siguiente EDO:
+
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Ecuación Modelo:}
+        \begin{equation*}
+            \frac{dD}{dt} = rD\left(1 - \frac{D}{K}\right) - \delta D \tag{2}
+        \end{equation*}
+    \end{itemize}
+
+    donde:
+
+    \vspace{0.3cm}
+    \begin{center}
+    \resizebox{\linewidth}{!}{
+    \begin{tabular}{c p{6.5cm} p{6.5cm}}
+    \toprule
+    \textbf{Variable} & \textbf{Significado en el modelo original (ecología)} & \textbf{Interpretación en el contexto ``base de datos''} \\
+    \midrule
+    $D(t)$ & Población (biomasa, número de individuos) en el tiempo $t$ & Tamaño de la base de datos (número de registros o GB) en el tiempo $t$ \\
+    \addlinespace
+    $r$ & Tasa de crecimiento intrínseco (natalidad menos mortalidad natural) & Tasa de crecimiento de la base de datos (inserciones por unidad de tiempo por registro existente) \\
+    \addlinespace
+    $K$ & Capacidad de carga del entorno (máximo sostenible) & Capacidad máxima de la base de datos (límite de almacenamiento o de rendimiento) \\
+    \addlinespace
+    $\delta$ & Tasa de cosecha (proporcional a la población) & Tasa de eliminación de registros obsoletos (proporcional al tamaño actual) \\
+    \addlinespace
+    $D_{0}$ & Población inicial al tiempo $t_{0}$ (usualmente $t_{0}=0$) & Tamaño inicial de la base de datos al tiempo $t_{0}$ \\
+    \bottomrule
+    \end{tabular}
+    }
+    \end{center}
+    \vspace{0.3cm}
+
+    \textbf{Valores con sentido aplicable en la realidad:} \\
+    Para una base de datos distribuida de tamaño medio (por ejemplo, un sistema de logs o un almacén de datos operacional):
+
+    \vspace{0.3cm}
+    \begin{center}
+    \resizebox{\linewidth}{!}{
+    \begin{tabular}{c c c p{7cm}}
+    \toprule
+    \textbf{Parámetro} & \textbf{Valor} & \textbf{Unidades} & \textbf{Interpretación} \\
+    \midrule
+    $D_{0}$ ($t_{0}=0$) & $100$ & TB & Tamaño inicial de la base de datos \\
+    \addlinespace
+    $r$ & $0.05$ & $\text{TB}/(\text{TB}\cdot\text{día}) = 1/\text{día}$ & Tasa de crecimiento: 5\% del tamaño actual por día \\
+    \addlinespace
+    $K$ & $1000$ & TB & Capacidad máxima del clúster ($1\text{ PB}$) \\
+    \addlinespace
+    $\delta$ & $0.02$ & $1/\text{día}$ & Tasa de eliminación: 2\% del tamaño actual por día \\
+    \bottomrule
+    \end{tabular}
+    }
+    \end{center}
+    \vspace{0.3cm}
+
+    Preguntas:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Muestra que la ED (2) se puede reescribir como:
+        \[ \frac{dD}{dt} = (r-\delta)D\left(1 - \frac{D}{K(1-\delta/r)}\right) \]
+        donde queda claro que la eliminación proporcional $\delta$ reduce tanto la tasa de crecimiento $r$ como la capacidad de carga $K$ efectivas.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Calcula la tasa de crecimiento efectiva: $r-\delta$.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Da la capacidad de carga efectiva: $K_{\text{eff}} = K(1-\delta/r)$.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Determine el tamaño (solución) de equilibrio.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿En cuántas regiones queda dividido el espacio, según las soluciones de equilibrio?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿En qué región tiene sentido físico (real) nuestro problema?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Halle $D(t)$, con la condición inicial y valores de los parámetros dados. \\
+        \textbf{HINT:} Transforma la ED (2) a la forma:
+        \[ \frac{dD}{dt} = \left[(r-\delta) - \frac{r}{K}D\right]D \]
+        separa y resuelve el lado en términos de ``$D$'' por fracciones parciales.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+\end{enumerate}

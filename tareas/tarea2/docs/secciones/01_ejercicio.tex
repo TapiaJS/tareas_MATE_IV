@@ -1,0 +1,164 @@
+% ============================================================
+% Sección 1
+% ============================================================
+\section{1 Métodos Numéricos en \texttt{solve\_ivp} de Python}
+
+\begin{tcolorbox}[enunciado]
+Está muy extendido en el imaginario colectivo de los estudiantes que las computadoras lo hacen todo bien y que basta con poner el código para que en automático todo salga perfecto, no obstante ésta percepción es incorrecta como de manera muy sencilla veremos en esta sección.
+
+Además se te hacen algunas preguntas, que debes contestar siguiendo la bibliografía indicada.
+
+\vspace{0.2cm}
+\textbf{Clases (Apoyo Secundario):}
+\begin{itemize}[leftmargin=*]
+    \item Solución EDO con y sin unicidad 24Ago26 MCA4
+    \item Sol Equilibrio, Curva Integral, Campo Direccional 26 Ago 2026 MCA4
+\end{itemize}
+
+\textbf{Código:}
+\begin{itemize}[leftmargin=*]
+    \item Github: \texttt{1.1\_Campo\_Direccional\_y\_Curva\_Integral}
+    \item GiHub: \texttt{2.3\_Métodos\_Numericos}
+\end{itemize}
+
+\textbf{Documentación:}
+\begin{itemize}[leftmargin=*]
+    \item Web: Python Doc \texttt{solve\_ivp}
+\end{itemize}
+
+\textbf{Requisitos:} \\
+Debes instalar numba:
+\begin{terminal}
+pip install numba
+\end{terminal}
+\end{tcolorbox}
+
+\subsection*{ACTIVIDADES}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item En las clases arriba mencionadas y en la Actividad 1 sección 3.3 vimos la EDO:
+    \[ \frac{dy}{dx} = \frac{4-2x}{3y^{2}-5} \]
+    cuya función (ecuación) solución implícita es:
+    \[ y^{3}-5y+x^{2}-4x=c \]
+    y en el código 
+    \[\texttt{Campo\_Direccional\_Curvas\_Integrales\_dy\_4-2x\_div\_3y2-5.py} \]
+    se grafican el campo direccional y un par de curvas integrales (solución) de la EDO para distintos valores de $c$.
+
+    Usando la documentación oficial responde y realiza lo que se indica en los siguientes incisos:
+
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Transcriba y ejecute el código.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿Cuáles son los métodos que puede utilizar \texttt{solve\_ivp}?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Si no se indica algún método particular, ¿cuál se utiliza?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item En la solución: \texttt{sol1}
+        \begin{enumerate}[label=\roman*., leftmargin=*]
+            \item Cambia \texttt{BDF} por \texttt{RK45}, es decir, modifica:
+            \begin{terminal}
+sol1 = solve\_ivp(f, (0,4), [1.3], method='BDF')
+            \end{terminal}
+            por:
+            \begin{terminal}
+sol1 = solve\_ivp(f, (0,4), [1.3], method='RK45')
+            \end{terminal}
+            ¿Con cuál método consideras se calcula adecuadamente la solución?
+            \subsection*{Solución}
+            % Escribe tu respuesta aquí
+
+            \item Analiza el número de pasos tomado por \texttt{BDF} y \texttt{RK45}. \\
+            \textbf{HINT:} Puedes ver el ``explorador de variables'' o utilizar la instrucción \texttt{len(sol1.t)} (muy recomendable). ¿Qué método tomó más pasos?
+            \subsection*{Solución}
+            % Escribe tu respuesta aquí
+
+            \item Analiza la distribución de puntos calculados por método de manera gráfica. Para esto solo debes graficar los puntos calculados. Cambia:
+            \begin{terminal}
+plt.plot(sol1.t, sol1.y[0], color='brown')
+            \end{terminal}
+            a la forma:
+            \begin{terminal}
+plt.plot(sol1.t, sol1.y[0], 'o', color='brown', markersize=3)
+            \end{terminal}
+            Usando los resultados obtenidos, justifica por qué un método lo hace bien y el otro incorrectamente.
+            \subsection*{Solución}
+            % Escribe tu respuesta aquí
+        \end{enumerate}
+
+        \item ¿Qué método utiliza \texttt{solve\_ivp} para \texttt{sol3}?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item En solución: \texttt{sol4}
+        \begin{enumerate}[label=\roman*., leftmargin=*]
+            \item Cambia \texttt{LSODA} por \texttt{DOP853}, es decir, modifica:
+            \begin{terminal}
+sol4 = solve\_ivp(f, (-0.8, 4.6), [-2.6], method='LSODA')
+            \end{terminal}
+            por:
+            \begin{terminal}
+sol4 = solve\_ivp(f, (-0.8, 4.6), [-2.6], method='DOP853')
+            \end{terminal}
+            ¿Qué modificación presenta la gráfica de la curva solución?
+            \subsection*{Solución}
+            % Escribe tu respuesta aquí
+
+            \item Por simple inspección, ¿cómo justificas que el resultado dado por el método ``\texttt{DOP853}'' no es correcto?
+            \subsection*{Solución}
+            % Escribe tu respuesta aquí
+
+            \item Analiza el número de pasos tomado por \texttt{LSODA} y \texttt{DOP853}. \\
+            \textbf{HINT:} Puedes utilizar la instrucción \texttt{len(sol4.y[0])}. ¿Cuántos pasos genera cada método?
+            \subsection*{Solución}
+            % Escribe tu respuesta aquí
+        \end{enumerate}
+
+        \item De manera breve y siguiendo la documentación base, di a qué se refieren cada uno de los 6 métodos que implementa \texttt{solve\_ivp}.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+
+    \item Reescribe y ejecuta el código, dado en Github Métodos numéricos: 
+    \[\texttt{RK4\_Oscilador\_Armonico\_Py\_vs\_Numba.py}\]
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item ¿Cuál es el tiempo de solución al problema con:
+        \begin{itemize}[leftmargin=*]
+            \item \texttt{RK4 Python}
+            \item \texttt{RK4 Numba}
+        \end{itemize}
+        \textbf{HINT:} Esto lo imprime el código.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿Cuál es la diferencia de tiempo entre ambos procedimientos?
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item ¿El problema que resuelven es el mismo? Menciona cuál es.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Los métodos \texttt{rk4\_python} y \texttt{rk4\_numba} ¿son iguales?, en el sentido de que:
+        \begin{itemize}[leftmargin=*]
+            \item reciben los mismos parámetros
+            \item la estructura interna (codificación) es igual
+            \item se le manda llamar con los mismos valores
+        \end{itemize}
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Habiendo resuelto lo anterior, justifica por qué un procedimiento es más rápido (eficiente) que el otro. \\
+        \textbf{HINT:} Qué hace \texttt{numba} y la instrucción:
+        \begin{terminal}
+@njit(cache=True, fastmath=True)
+        \end{terminal}
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+\end{enumerate}
