@@ -49,79 +49,129 @@ pip install numba
     \begin{enumerate}[label=(\alph*), leftmargin=*]
         \item Transcriba y ejecute el código.
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\linewidth]{imagenes/01_ejercicio/01_actividad/01_image.png}
+        \end{figure}
 
         \item ¿Cuáles son los métodos que puede utilizar \texttt{solve\_ivp}?
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+
+        Los métodos de integración que puede utilizar la función \texttt{solve\_ivp} son \textbf{RK45}, \textbf{RK23}, \textbf{DOP853}, \textbf{Radau}, \textbf{BDF} y \textbf{LSODA}.
 
         \item Si no se indica algún método particular, ¿cuál se utiliza?
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+        De acuerdo con la documentación de la biblioteca, si no se especifica explícitamente ningún método de integración al llamar a la función \texttt{solve\_ivp} (como sucede con la variable \texttt{sol3} del código), el algoritmo utiliza por defecto el método \textbf{`RK45'}.
+
+        Este es un método explícito de Runge-Kutta de orden 5(4), el cual controla el error asumiendo la precisión de un método de cuarto orden, pero realiza los pasos de integración utilizando una fórmula precisa de quinto orden.
 
         \item En la solución: \texttt{sol1}
         \begin{enumerate}[label=\roman*., leftmargin=*]
             \item Cambia \texttt{BDF} por \texttt{RK45}, es decir, modifica:
             \begin{terminal}
-sol1 = solve\_ivp(f, (0,4), [1.3], method='BDF')
+                sol1 = solve\_ivp(f, (0,4), [1.3], method='BDF')
             \end{terminal}
             por:
             \begin{terminal}
-sol1 = solve\_ivp(f, (0,4), [1.3], method='RK45')
+                sol1 = solve\_ivp(f, (0,4), [1.3], method='RK45')
             \end{terminal}
             ¿Con cuál método consideras se calcula adecuadamente la solución?
             \subsection*{Solución}
-            % Escribe tu respuesta aquí
+            El método que calcula la solución más adecuada desde una perspectiva física y matemática es \textbf{RK45}, ya que respeta la frontera natural del sistema dinámico y no inventa soluciones más allá de la asíntota.
 
             \item Analiza el número de pasos tomado por \texttt{BDF} y \texttt{RK45}. \\
             \textbf{HINT:} Puedes ver el ``explorador de variables'' o utilizar la instrucción \texttt{len(sol1.t)} (muy recomendable). ¿Qué método tomó más pasos?
             \subsection*{Solución}
-            % Escribe tu respuesta aquí
+            El método BDF requirió más pasos (127 en total), mientras que RK45 se detuvo en apenas 13.
 
             \item Analiza la distribución de puntos calculados por método de manera gráfica. Para esto solo debes graficar los puntos calculados. Cambia:
             \begin{terminal}
-plt.plot(sol1.t, sol1.y[0], color='brown')
+                plt.plot(sol1.t, sol1.y[0], color='brown')
             \end{terminal}
             a la forma:
             \begin{terminal}
-plt.plot(sol1.t, sol1.y[0], 'o', color='brown', markersize=3)
+                plt.plot(sol1.t, sol1.y[0], 'o', color='brown', markersize=3)
             \end{terminal}
             Usando los resultados obtenidos, justifica por qué un método lo hace bien y el otro incorrectamente.
             \subsection*{Solución}
-            % Escribe tu respuesta aquí
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.45\linewidth]{imagenes/01_ejercicio/01_actividad/02_image.png}
+                \caption{Captura de pantalla de la gráfica resultante de sol1 calculado con BDF}
+            \end{figure}
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.45\linewidth]{imagenes/01_ejercicio/01_actividad/03_image.png}
+                \caption{Captura de pantalla de la gráfica resultante de sol1 calculado con RK45}
+            \end{figure}
+
+            El método \texttt{BDF} lo hace incorrectamente (127 pasos), porque en el momento que la curva se acerca a la tangente vertical en $y \approx 1.29$, el algoritmo es tan robusto que reduce agresivamente su tamaño de paso (generando ese exceso de puntos) y ``fuerza'' numéricamente un salto a través de la asíntota. Esto es falso desde la topología, ya que inventa una continuidad donde el dominio de la función original está roto.
+
+            En cambio, \texttt{RK45} lo hace bien (13 pasos). Al llegar a la zona donde la pendiente $\frac{dy}{dx}$ se dispara a infinito, el control de error del algoritmo se satura y simplemente detiene la integración en el paso 13. Aunque a nivel de programación esto se registra como una terminación prematura o ``falla'', matemáticamente representa el comportamiento físico real: la curva integral se topa con la pared y muere ahí, respetando la restricción de que las soluciones no pueden cruzar el punto crítico.
         \end{enumerate}
 
         \item ¿Qué método utiliza \texttt{solve\_ivp} para \texttt{sol3}?
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+        La variable \texttt{sol3} utiliza el método \textbf{RK45}. Según la documentación oficial, si se omite el argumento \texttt{method}, la función asume por defecto este esquema explícito de Runge-Kutta.
 
         \item En solución: \texttt{sol4}
         \begin{enumerate}[label=\roman*., leftmargin=*]
             \item Cambia \texttt{LSODA} por \texttt{DOP853}, es decir, modifica:
             \begin{terminal}
-sol4 = solve\_ivp(f, (-0.8, 4.6), [-2.6], method='LSODA')
+                sol4 = solve\_ivp(f, (-0.8, 4.6), [-2.6], method='LSODA')
             \end{terminal}
             por:
             \begin{terminal}
-sol4 = solve\_ivp(f, (-0.8, 4.6), [-2.6], method='DOP853')
+                sol4 = solve\_ivp(f, (-0.8, 4.6), [-2.6], method='DOP853')
             \end{terminal}
             ¿Qué modificación presenta la gráfica de la curva solución?
             \subsection*{Solución}
-            % Escribe tu respuesta aquí
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.45\linewidth]{imagenes/01_ejercicio/01_actividad/04_image.png}
+                \caption{Captura de pantalla de la gráfica resultante de sol4 calculado con LSODA}
+            \end{figure}
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.45\linewidth]{imagenes/01_ejercicio/01_actividad/05_image.png}
+                \caption{Captura de pantalla de la gráfica resultante de sol4 calculado con DOP853}
+            \end{figure}
+
+            Al cambiar el algoritmo a \textbf{DOP853}, la curva morada pierde su ``suavidad'' geométrica y se deforma, transformándose en una línea poligonal tosca compuesta por apenas un par de segmentos rectos.
 
             \item Por simple inspección, ¿cómo justificas que el resultado dado por el método ``\texttt{DOP853}'' no es correcto?
             \subsection*{Solución}
-            % Escribe tu respuesta aquí
+            El resultado es incorrecto porque su aspecto ``picudo'' contradice la naturaleza suave y continua que debe tener la curva integral en este campo direccional. Esta deformación ocurre porque el solucionador calculó muy pocos puntos a lo largo de un intervalo grande, resultando en una conexión deforme entre puntos distantes.
 
             \item Analiza el número de pasos tomado por \texttt{LSODA} y \texttt{DOP853}. \\
             \textbf{HINT:} Puedes utilizar la instrucción \texttt{len(sol4.y[0])}. ¿Cuántos pasos genera cada método?
             \subsection*{Solución}
-            % Escribe tu respuesta aquí
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.45\linewidth]{imagenes/01_ejercicio/01_actividad/06_image.png}
+                \caption{Captura de pantalla del número de pasos tomados por \texttt{LSODA} y \texttt{DOP853}.}
+            \end{figure}
+
+            El método \textbf{LSODA} requiere 20 pasos para trazar el arco correctamente, mientras que \textbf{DOP853} se detiene tras generar únicamente 4 pasos.
         \end{enumerate}
 
         \item De manera breve y siguiendo la documentación base, di a qué se refieren cada uno de los 6 métodos que implementa \texttt{solve\_ivp}.
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+        \begin{itemize}[leftmargin=*]
+            \item \textbf{\texttt{RK45}:} Método explícito de Runge-Kutta de orden 5(4). Es el predeterminado y controla el error asumiendo la precisión de un método de cuarto orden, tomando los pasos con una fórmula de quinto orden.
+
+            \item \textbf{\texttt{RK23}:} Método explícito de Runge-Kutta de orden 3(2). Sigue la misma lógica que \texttt{RK45}, pero asumiendo precisión de segundo orden y dando pasos con una fórmula de tercer orden.
+
+            \item \textbf{\texttt{DOP853}:} Método explícito de Runge-Kutta de orden 8, implementado desde el algoritmo original en Fortran. Es recomendado para resolver con alta precisión problemas no rígidos.
+
+            \item \textbf{\texttt{Radau}:} Método implícito de Runge-Kutta de la familia Radau IIA de orden 5. Diseñado para resolver sistemas rígidos.
+
+            \item \textbf{\texttt{BDF}:} Método implícito multipaso de orden variable (1 a 5) basado en una fórmula de diferenciación hacia atrás. Utiliza un esquema de pasos casi constantes y está enfocado a problemas rígidos.
+
+            \item \textbf{\texttt{LSODA}:} Método híbrido Adams/BDF. Funciona como un envoltorio del solucionador de Fortran ODEPACK y cuenta con detección automática de rigidez, cambiando de método según las necesidades del problema.
+        \end{itemize}
     \end{enumerate}
 
     \item Reescribe y ejecuta el código, dado en Github Métodos numéricos: 
@@ -134,15 +184,27 @@ sol4 = solve\_ivp(f, (-0.8, 4.6), [-2.6], method='DOP853')
         \end{itemize}
         \textbf{HINT:} Esto lo imprime el código.
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+        \begin{itemize}
+            \item Tiempo con Python: 18.954 s  
+            \item Tiempo con Numba: 0.512 s   
+        \end{itemize}
 
         \item ¿Cuál es la diferencia de tiempo entre ambos procedimientos?
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+        $18.954 - 0.512 = 18.442$ segundos
 
         \item ¿El problema que resuelven es el mismo? Menciona cuál es.
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+        Sí, ambos algoritmos resuelven matemáticamente el mismo problema. El código evalúa la solución numérica mediante el método de Runge-Kutta de cuarto orden (RK4) para un \textbf{oscilador armónico amortiguado forzado}.
+
+        El modelo físico parte de la ecuación diferencial de segundo orden $y'' + 2\gamma y' + \omega_0^2 y = F \cos(\omega_d t)$. El código reescribe el modelo en el siguiente sistema equivalente de ecuaciones:
+
+        \begin{itemize}[leftmargin=*]
+            \item $y' = v$
+            \item $v' = F \cos(\omega_d t) - 2\gamma v - \omega_0^2 y$
+        \end{itemize}
+
+        La equivalencia es exacta porque tanto la función \texttt{rk4\_python} como \texttt{rk4\_numba} mandan llamar a la misma función del campo vectorial \texttt{f(t, y, v, gamma, w0, F, wd)} para calcular los pesos intermedios en cada iteración del bucle.
 
         \item Los métodos \texttt{rk4\_python} y \texttt{rk4\_numba} ¿son iguales?, en el sentido de que:
         \begin{itemize}[leftmargin=*]
@@ -151,14 +213,22 @@ sol4 = solve\_ivp(f, (-0.8, 4.6), [-2.6], method='DOP853')
             \item se le manda llamar con los mismos valores
         \end{itemize}
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+        Sí, los métodos \texttt{rk4\_python} y \texttt{rk4\_numba} son equivalentes:
+
+        \begin{itemize}[leftmargin=*]
+            \item Ambas funciones reciben exactamente los mismos nueve argumentos en el mismo orden (\texttt{y0, v0, t0, tf, h, gamma, w0, F, wd}).
+
+            \item La codificación es idéntica línea por línea. Ambas inicializan los arreglos con \texttt{np.empty(n)}, ejecutan el mismo ciclo \texttt{for}, calculan las cuatro pendientes ($k_1$, $k_2$, $k_3$, $k_4$) evaluando la función \texttt{f} y aplican la misma fórmula de actualización ponderada. La única diferencia en el código es que la función optimizada posee el decorador \texttt{@njit(cache=True, fastmath=True)} justo antes de su definición.
+
+            \item Durante la sección de evaluación de rendimiento (\textit{benchmark}), ambas funciones son ejecutadas enviándoles exactamente las mismas variables con los mismos parámetros numéricos.
+        \end{itemize}
 
         \item Habiendo resuelto lo anterior, justifica por qué un procedimiento es más rápido (eficiente) que el otro. \\
         \textbf{HINT:} Qué hace \texttt{numba} y la instrucción:
         \begin{terminal}
-@njit(cache=True, fastmath=True)
+            @njit(cache=True, fastmath=True)
         \end{terminal}
         \subsection*{Solución}
-        % Escribe tu respuesta aquí
+        El procedimiento con Numba es más rápido porque implementa compilación \textit{Just-In-Time} (JIT) para evadir las limitaciones del intérprete tradicional. Mientras que Python puro procesa las instrucciones línea por línea en cada iteración del ciclo, la instrucción \texttt{@njit(cache=True, fastmath=True)} traduce toda la función matemática directamente a código de máquina nativo antes de la ejecución. Específicamente, \texttt{@njit} fuerza esta compilación a nivel de hardware, \texttt{cache=True} almacena el binario resultante en memoria para evitar recompilaciones futuras, y \texttt{fastmath=True} habilita operaciones ultrarrápidas en el procesador al relajar ligeramente el rigor del estándar de punto flotante.
     \end{enumerate}
 \end{enumerate}
