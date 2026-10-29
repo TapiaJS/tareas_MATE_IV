@@ -70,14 +70,18 @@
         \begin{itemize}[leftmargin=*]
             \item \textbf{Regularidad $C^k$ ($C^2$):}\\
             Calculamos las dos primeras derivadas de la función propuesta $\gamma(t)$:
-            \begin{enumerate}[label=\arabic*., leftmargin=*]
-                \item \textbf{Primera derivada:}
-                \[ \frac{d}{dt}\gamma(t) = -A \omega_0 \sin(\omega_0 t) + B \omega_0 \cos(\omega_0 t) \]
-                \item \textbf{Segunda derivada:}
-                \[ \frac{d^2}{dt^2}\gamma(t) = -A \omega_0^2 \cos(\omega_0 t) - B \omega_0^2 \sin(\omega_0 t) \]
-            \end{enumerate}
-            Factorizando $-\omega_0^2$:
-            \[ \frac{d^2}{dt^2}\gamma(t) = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
+            % \begin{enumerate}[label=\arabic*., leftmargin=*]
+            %     \item \textbf{Primera derivada:}
+            %     \[ \frac{d}{dt}\gamma(t) = -A \omega_0 \sin(\omega_0 t) + B \omega_0 \cos(\omega_0 t) \]
+            %     \item \textbf{Segunda derivada:}
+            %     \[ \frac{d^2}{dt^2}\gamma(t) = -A \omega_0^2 \cos(\omega_0 t) - B \omega_0^2 \sin(\omega_0 t) \]
+            % \end{enumerate}
+            % Factorizando $-\omega_0^2$:
+            % \[ \frac{d^2}{dt^2}\gamma(t) = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{01_image.png}
+            \end{figure}
             Como las funciones trigonométricas $\cos(\omega_0 t)$ y $\sin(\omega_0 t)$ son infinitamente diferenciables ($C^\infty$) en todo $\mathbb{R}$, la función $\gamma(t)$ es de clase $C^2(I)$.
 
             \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
@@ -85,18 +89,27 @@
             
             \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(t) \in U, \forall t \in I$):}\\
             Para $k = 2$, el vector de estado $\vec{v}(t)$ está definido por:
-            \[ \vec{v}(t) = \left(t, \gamma(t), \frac{d}{dt}\gamma(t)\right) = \left(t, A \cos(\omega_0 t) + B \sin(\omega_0 t), -A \omega_0 \sin(\omega_0 t) + B \omega_0 \cos(\omega_0 t)\right) \]
+            %\[ \vec{v}(t) = \left(t, \gamma(t), \frac{d}{dt}\gamma(t)\right) = \left(t, A \cos(\omega_0 t) + B \sin(\omega_0 t), -A \omega_0 \sin(\omega_0 t) + B \omega_0 \cos(\omega_0 t)\right) \]
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{02_image.png}
+            \end{figure}
             Dado que $U = \mathbb{R}^3$, para cualquier valor $t \in I = \mathbb{R}$, el vector $\vec{v}(t) \in \mathbb{R}^3 = U$. Por lo tanto, $\vec{v}(t) \in U, \forall t \in I$.
             
             \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d^2}{dt^2}\gamma(t) = \vec{F}(\vec{v}(t))$):}
-            \begin{itemize}[leftmargin=*]
-                \item \textbf{Lado Izquierdo (derivada de orden $k=2$):}
-                \[ \frac{d^2}{dt^2}\gamma(t) = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
-                \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}
-                \[ \vec{F}(\vec{v}(t)) = \vec{F}\left(t, \gamma(t), \gamma'(t)\right) = -\omega_0^2 \gamma(t) = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
-                \item \textbf{Identidad:}
-                \[ -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
-            \end{itemize}
+            % \begin{itemize}[leftmargin=*]
+            %     \item \textbf{Lado Izquierdo (derivada de orden $k=2$):}
+            %     \[ \frac{d^2}{dt^2}\gamma(t) = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
+            %     \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}
+            %     \[ \vec{F}(\vec{v}(t)) = \vec{F}\left(t, \gamma(t), \gamma'(t)\right) = -\omega_0^2 \gamma(t) = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
+            %     \item \textbf{Identidad:}
+            %     \[ -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] = -\omega_0^2 [ A \cos(\omega_0 t) + B \sin(\omega_0 t) ] \]
+            % \end{itemize}
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{03_image.png}
+            \end{figure}
         \end{itemize}
 
         \vspace{0.3cm}
@@ -149,44 +162,57 @@
             \item \textbf{Regularidad $C^k$ ($C^2$):}\\
             Para simplificar la notación de las derivadas, definimos la parte oscilatoria como $u(t) = A \cos(\omega_d t) + B \sin(\omega_d t)$. Sabemos por el inciso anterior que su segunda derivada es $u''(t) = -\omega_d^2 u(t)$.\\
             Nuestra función propuesta es $\gamma(t) = e^{-\gamma t}u(t)$. Calculamos sus derivadas:
-            \begin{enumerate}[label=\arabic*., leftmargin=*]
-                \item \textbf{Primera derivada (Regla del producto):}
-                \[ \frac{d}{dt}\gamma(t) = e^{-\gamma t}[u'(t) - \gamma u(t)] \]
-                \item \textbf{Segunda derivada (Regla del producto):}
-                \[ \frac{d^2}{dt^2}\gamma(t) = -\gamma e^{-\gamma t}[u'(t) - \gamma u(t)] + e^{-\gamma t}[u''(t) - \gamma u'(t)] \]
-            \end{enumerate}
-            Agrupando términos y factorizando $e^{-\gamma t}$:
-            \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ \gamma^2 u(t) - 2\gamma u'(t) + u''(t) ] \]
-            Sustituyendo $u''(t) = -\omega_d^2 u(t)$:
-            \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ (\gamma^2 - \omega_d^2)u(t) - 2\gamma u'(t) ] \]
-            Como $\omega_d^2 = \omega_0^2 - \gamma^2$, sabemos que $\gamma^2 - \omega_d^2 = 2\gamma^2 - \omega_0^2$. Sustituyendo esto último:
-            \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
+            % \begin{enumerate}[label=\arabic*., leftmargin=*]
+            %     \item \textbf{Primera derivada (Regla del producto):}
+            %     \[ \frac{d}{dt}\gamma(t) = e^{-\gamma t}[u'(t) - \gamma u(t)] \]
+            %     \item \textbf{Segunda derivada (Regla del producto):}
+            %     \[ \frac{d^2}{dt^2}\gamma(t) = -\gamma e^{-\gamma t}[u'(t) - \gamma u(t)] + e^{-\gamma t}[u''(t) - \gamma u'(t)] \]
+            % \end{enumerate}
+            % Agrupando términos y factorizando $e^{-\gamma t}$:
+            % \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ \gamma^2 u(t) - 2\gamma u'(t) + u''(t) ] \]
+            % Sustituyendo $u''(t) = -\omega_d^2 u(t)$:
+            % \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ (\gamma^2 - \omega_d^2)u(t) - 2\gamma u'(t) ] \]
+            % Como $\omega_d^2 = \omega_0^2 - \gamma^2$, sabemos que $\gamma^2 - \omega_d^2 = 2\gamma^2 - \omega_0^2$. Sustituyendo esto último:
+            % \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{04_image.png}
+            \end{figure}
             Dado que las funciones exponenciales y trigonométricas son de clase $C^\infty$ en todo $\mathbb{R}$, la función $\gamma(t)$ es rigurosamente de clase $C^2(I)$.
 
             \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
             Definimos el intervalo abierto como $I = (-\infty, \infty) = \mathbb{R}$.
 
             \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(t) \in U, \forall t \in I$):}\\
-            El vector de estado para $k=2$ es:
-            \[ \vec{v}(t) = \left(t, \gamma(t), \frac{d}{dt}\gamma(t)\right) \]
-            Puesto que $U = \mathbb{R}^3$, el vector $\vec{v}(t)$ pertenece a $U$ para cualquier instante $t \in \mathbb{R}$.
+            % El vector de estado para $k=2$ es:
+            % \[ \vec{v}(t) = \left(t, \gamma(t), \frac{d}{dt}\gamma(t)\right) \]
+            % Puesto que $U = \mathbb{R}^3$, el vector $\vec{v}(t)$ pertenece a $U$ para cualquier instante $t \in \mathbb{R}$.
 
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{05_image.png}
+            \end{figure}
             \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d^2}{dt^2}\gamma(t) = \vec{F}(\vec{v}(t))$):}
-            \begin{itemize}[leftmargin=*]
-                \item \textbf{Lado Izquierdo (derivada de orden $k=2$):}
-                \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
-                \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
-                Evaluamos la función $\vec{F}$ en nuestro vector de estado:
-                \[ \vec{F}(\vec{v}(t)) = -2\gamma \gamma'(t) - \omega_0^2 \gamma(t) \]
-                Sustituimos $\gamma(t)$ y $\gamma'(t)$:
-                \[ \vec{F}(\vec{v}(t)) = -2\gamma \left( e^{-\gamma t}[u'(t) - \gamma u(t)] \right) - \omega_0^2 \left( e^{-\gamma t}u(t) \right) \]
-                Factorizamos $e^{-\gamma t}$:
-                \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ -2\gamma u'(t) + 2\gamma^2 u(t) - \omega_0^2 u(t) ] \]
-                Agrupando los términos que multiplican a $u(t)$:
-                \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
-                \item \textbf{Identidad:}
-                \[ e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
-            \end{itemize}
+            % \begin{itemize}[leftmargin=*]
+            %     \item \textbf{Lado Izquierdo (derivada de orden $k=2$):}
+            %     \[ \frac{d^2}{dt^2}\gamma(t) = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
+            %     \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
+            %     Evaluamos la función $\vec{F}$ en nuestro vector de estado:
+            %     \[ \vec{F}(\vec{v}(t)) = -2\gamma \gamma'(t) - \omega_0^2 \gamma(t) \]
+            %     Sustituimos $\gamma(t)$ y $\gamma'(t)$:
+            %     \[ \vec{F}(\vec{v}(t)) = -2\gamma \left( e^{-\gamma t}[u'(t) - \gamma u(t)] \right) - \omega_0^2 \left( e^{-\gamma t}u(t) \right) \]
+            %     Factorizamos $e^{-\gamma t}$:
+            %     \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ -2\gamma u'(t) + 2\gamma^2 u(t) - \omega_0^2 u(t) ] \]
+            %     Agrupando los términos que multiplican a $u(t)$:
+            %     \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
+            %     \item \textbf{Identidad:}
+            %     \[ e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] = e^{-\gamma t} [ (2\gamma^2 - \omega_0^2)u(t) - 2\gamma u'(t) ] \]
+            % \end{itemize}
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{06_image.png}
+            \end{figure}
         \end{itemize}
 
         \vspace{0.3cm}
@@ -223,17 +249,21 @@
         \begin{itemize}[leftmargin=*]
             \item \textbf{Regularidad $C^k$ ($C^2$):}\\
             Calculamos las dos primeras derivadas de la función propuesta $x(t) = (A + Bt)e^{-\gamma t}$:
-            \begin{enumerate}[label=\arabic*., leftmargin=*]
-                \item \textbf{Primera derivada (Regla del producto):}
-                \[ \frac{d}{dt}x(t) = B e^{-\gamma t} - \gamma(A + Bt)e^{-\gamma t} \]
-                Factorizamos $e^{-\gamma t}$:
-                \[ \frac{d}{dt}x(t) = e^{-\gamma t} [ B - \gamma A - \gamma B t ] \]
+            % \begin{enumerate}[label=\arabic*., leftmargin=*]
+            %     \item \textbf{Primera derivada (Regla del producto):}
+            %     \[ \frac{d}{dt}x(t) = B e^{-\gamma t} - \gamma(A + Bt)e^{-\gamma t} \]
+            %     Factorizamos $e^{-\gamma t}$:
+            %     \[ \frac{d}{dt}x(t) = e^{-\gamma t} [ B - \gamma A - \gamma B t ] \]
                 
-                \item \textbf{Segunda derivada (Regla del producto aplicada al paso anterior):}
-                \[ \frac{d^2}{dt^2}x(t) = -\gamma B e^{-\gamma t} - \gamma e^{-\gamma t} [ B - \gamma A - \gamma B t ] \]
-                Agrupando y factorizando $e^{-\gamma t}$:
-                \[ \frac{d^2}{dt^2}x(t) = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
-            \end{enumerate}
+            %     \item \textbf{Segunda derivada (Regla del producto aplicada al paso anterior):}
+            %     \[ \frac{d^2}{dt^2}x(t) = -\gamma B e^{-\gamma t} - \gamma e^{-\gamma t} [ B - \gamma A - \gamma B t ] \]
+            %     Agrupando y factorizando $e^{-\gamma t}$:
+            %     \[ \frac{d^2}{dt^2}x(t) = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
+            % \end{enumerate}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{07_image.png}
+            \end{figure}
             Dado que los polinomios algebraicos y las funciones exponenciales son suaves e infinitamente diferenciables ($C^\infty$) en todo $\mathbb{R}$, se cumple rigurosamente que $x(t)$ es de clase $C^2(I)$.
 
             \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
@@ -242,24 +272,28 @@
             \item \textbf{Condición ii) Pertenece al dominio $U$ ($\vec{v}(t) \in U, \forall t \in I$):}\\
             Construimos el vector de estado para $k=2$:
             \[ \vec{v}(t) = \left(t, x(t), \frac{d}{dt}x(t)\right) \]
-            Dado que $t$, $x(t)$ y su derivada arrojan valores reales bien definidos para cualquier $t$, el vector $\vec{v}(t)$ pertenece inequívocamente al dominio $U = \mathbb{R}^3$ para todo instante $t \in I$.
+            Dado que $t$, $x(t)$ y su derivada arrojan valores reales bien definidos para cualquier $t$, el vector $\vec{v}(t)$ pertenece al dominio $U = \mathbb{R}^3$ para todo instante $t \in I$.
 
             \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d^2}{dt^2}x(t) = \vec{F}(\vec{v}(t))$):}
-            \begin{itemize}[leftmargin=*]
-                \item \textbf{Lado Izquierdo (derivada de orden $k=2$ previamente calculada):}
-                \[ \frac{d^2}{dt^2}x(t) = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
+            % \begin{itemize}[leftmargin=*]
+            %     \item \textbf{Lado Izquierdo (derivada de orden $k=2$ previamente calculada):}
+            %     \[ \frac{d^2}{dt^2}x(t) = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
                 
-                \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
-                Evaluamos la función normalizada $\vec{F}$ sustituyendo $x(t)$ y $x'(t)$:
-                \[ \vec{F}(\vec{v}(t)) = -2\gamma \left( e^{-\gamma t} [ B - \gamma A - \gamma B t ] \right) - \gamma^2 \left( (A + Bt)e^{-\gamma t} \right) \]
-                Factorizamos el término $e^{-\gamma t}$ común a ambas expresiones:
-                \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ -2\gamma B + 2\gamma^2 A + 2\gamma^2 B t - \gamma^2 A - \gamma^2 B t ] \]
-                Reducimos los términos algebraicos semejantes dentro del corchete ($2\gamma^2 A - \gamma^2 A$ y $2\gamma^2 B t - \gamma^2 B t$):
-                \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
+            %     \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
+            %     Evaluamos la función normalizada $\vec{F}$ sustituyendo $x(t)$ y $x'(t)$:
+            %     \[ \vec{F}(\vec{v}(t)) = -2\gamma \left( e^{-\gamma t} [ B - \gamma A - \gamma B t ] \right) - \gamma^2 \left( (A + Bt)e^{-\gamma t} \right) \]
+            %     Factorizamos el término $e^{-\gamma t}$ común a ambas expresiones:
+            %     \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ -2\gamma B + 2\gamma^2 A + 2\gamma^2 B t - \gamma^2 A - \gamma^2 B t ] \]
+            %     Reducimos los términos algebraicos semejantes dentro del corchete ($2\gamma^2 A - \gamma^2 A$ y $2\gamma^2 B t - \gamma^2 B t$):
+            %     \[ \vec{F}(\vec{v}(t)) = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
                 
-                \item \textbf{Identidad:}
-                \[ e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
-            \end{itemize}
+            %     \item \textbf{Identidad:}
+            %     \[ e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] = e^{-\gamma t} [ -2\gamma B + \gamma^2 A + \gamma^2 B t ] \]
+            % \end{itemize}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{08_image.png}
+            \end{figure}
         \end{itemize}
 
         \vspace{0.3cm}
@@ -294,12 +328,16 @@
         \begin{itemize}[leftmargin=*]
             \item \textbf{Regularidad $C^k$ ($C^2$):}\\
             Calculamos las derivadas sucesivas de la función propuesta $x(t) = A e^{-\alpha_1 t} + B e^{-\alpha_2 t}$:
-            \begin{enumerate}[label=\arabic*., leftmargin=*]
-                \item \textbf{Primera derivada:}
-                \[ \frac{d}{dt}x(t) = -A\alpha_1 e^{-\alpha_1 t} - B\alpha_2 e^{-\alpha_2 t} \]
-                \item \textbf{Segunda derivada:}
-                \[ \frac{d^2}{dt^2}x(t) = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
-            \end{enumerate}
+            % \begin{enumerate}[label=\arabic*., leftmargin=*]
+            %     \item \textbf{Primera derivada:}
+            %     \[ \frac{d}{dt}x(t) = -A\alpha_1 e^{-\alpha_1 t} - B\alpha_2 e^{-\alpha_2 t} \]
+            %     \item \textbf{Segunda derivada:}
+            %     \[ \frac{d^2}{dt^2}x(t) = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
+            % \end{enumerate}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{09_image.png}
+            \end{figure}
             Al estar conformada por la suma de dos funciones exponenciales reales, las cuales son infinitamente diferenciables ($C^\infty$) en cualquier instante del tiempo, la función $x(t)$ pertenece invariablemente a la clase $C^2(I)$.
 
             \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
@@ -311,24 +349,29 @@
             Dado que el tiempo, la posición $x(t)$ y la velocidad $x'(t)$ son números reales escalares, el vector ordenado $\vec{v}(t)$ pertenece a $U = \mathbb{R}^3$ para todo valor de $t \in \mathbb{R}$.
 
             \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d^2}{dt^2}x(t) = \vec{F}(\vec{v}(t))$):}
-            \begin{itemize}[leftmargin=*]
-                \item \textbf{Lado Izquierdo (derivada de orden $k=2$ calculada previamente):}
-                \[ \frac{d^2}{dt^2}x(t) = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
+            % \begin{itemize}[leftmargin=*]
+            %     \item \textbf{Lado Izquierdo (derivada de orden $k=2$ calculada previamente):}
+            %     \[ \frac{d^2}{dt^2}x(t) = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
                 
-                \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
-                Evaluamos la función $\vec{F}$ empleando $x(t)$ y $x'(t)$:
-                \[ \vec{F}(\vec{v}(t)) = -2\gamma \left( -A\alpha_1 e^{-\alpha_1 t} - B\alpha_2 e^{-\alpha_2 t} \right) - \omega_0^2 \left( A e^{-\alpha_1 t} + B e^{-\alpha_2 t} \right) \]
-                Agrupamos los términos de acuerdo a sus factores exponenciales correspondientes $A e^{-\alpha_1 t}$ y $B e^{-\alpha_2 t}$:
-                \[ \vec{F}(\vec{v}(t)) = A e^{-\alpha_1 t}(2\gamma\alpha_1 - \omega_0^2) + B e^{-\alpha_2 t}(2\gamma\alpha_2 - \omega_0^2) \]
+            %     \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
+            %     Evaluamos la función $\vec{F}$ empleando $x(t)$ y $x'(t)$:
+            %     \[ \vec{F}(\vec{v}(t)) = -2\gamma \left( -A\alpha_1 e^{-\alpha_1 t} - B\alpha_2 e^{-\alpha_2 t} \right) - \omega_0^2 \left( A e^{-\alpha_1 t} + B e^{-\alpha_2 t} \right) \]
+            %     Agrupamos los términos de acuerdo a sus factores exponenciales correspondientes $A e^{-\alpha_1 t}$ y $B e^{-\alpha_2 t}$:
+            %     \[ \vec{F}(\vec{v}(t)) = A e^{-\alpha_1 t}(2\gamma\alpha_1 - \omega_0^2) + B e^{-\alpha_2 t}(2\gamma\alpha_2 - \omega_0^2) \]
                 
-                \textit{(Para facilitar la demostración, notemos una propiedad de $\alpha_1$ y $\alpha_2$. Si elevamos $\alpha_1$ al cuadrado obtenemos $\alpha_1^2 = (\gamma + \sqrt{\gamma^2 - \omega_0^2})^2 = \gamma^2 + 2\gamma\sqrt{\gamma^2 - \omega_0^2} + \gamma^2 - \omega_0^2 = 2\gamma^2 + 2\gamma\sqrt{\gamma^2 - \omega_0^2} - \omega_0^2$. Sabiendo que $2\gamma\alpha_1 = 2\gamma^2 + 2\gamma\sqrt{\gamma^2 - \omega_0^2}$, podemos deducir que \textbf{$\alpha_1^2 = 2\gamma\alpha_1 - \omega_0^2$}. El mismo desarrollo exacto aplica para $\alpha_2$.)}
+            %     \textit{(Para facilitar la demostración, notemos una propiedad de $\alpha_1$ y $\alpha_2$. Si elevamos $\alpha_1$ al cuadrado obtenemos $\alpha_1^2 = (\gamma + \sqrt{\gamma^2 - \omega_0^2})^2 = \gamma^2 + 2\gamma\sqrt{\gamma^2 - \omega_0^2} + \gamma^2 - \omega_0^2 = 2\gamma^2 + 2\gamma\sqrt{\gamma^2 - \omega_0^2} - \omega_0^2$. Sabiendo que $2\gamma\alpha_1 = 2\gamma^2 + 2\gamma\sqrt{\gamma^2 - \omega_0^2}$, podemos deducir que \textbf{$\alpha_1^2 = 2\gamma\alpha_1 - \omega_0^2$}. El mismo desarrollo exacto aplica para $\alpha_2$.)}
 
-                Sustituyendo la identidad algebraica descrita anteriormente ($\alpha^2 = 2\gamma\alpha - \omega_0^2$), la expresión se simplifica a:
-                \[ \vec{F}(\vec{v}(t)) = A e^{-\alpha_1 t}(\alpha_1^2) + B e^{-\alpha_2 t}(\alpha_2^2) = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
+            %     Sustituyendo la identidad algebraica descrita anteriormente ($\alpha^2 = 2\gamma\alpha - \omega_0^2$), la expresión se simplifica a:
+            %     \[ \vec{F}(\vec{v}(t)) = A e^{-\alpha_1 t}(\alpha_1^2) + B e^{-\alpha_2 t}(\alpha_2^2) = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
                 
-                \item \textbf{Identidad:}
-                \[ A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
-            \end{itemize}
+            %     \item \textbf{Identidad:}
+            %     \[ A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} = A\alpha_1^2 e^{-\alpha_1 t} + B\alpha_2^2 e^{-\alpha_2 t} \]
+            % \end{itemize}
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{10_image.png}
+            \end{figure}
         \end{itemize}
 
         \vspace{0.3cm}
@@ -370,11 +413,10 @@
 
         \begin{itemize}[leftmargin=*]
             \item \textbf{Regularidad $C^k$ ($C^1$):}\\
-            Para simplificar la derivación, definimos el denominador como $D(t) = P_0 + (K - P_0)e^{r(t_0 - t)}$. Su derivada respecto al tiempo es $D'(t) = -r(K - P_0)e^{r(t_0 - t)}$.\\
-            Reescribimos la función como $\gamma(t) = K P_0 [D(t)]^{-1}$ y aplicamos la regla de la cadena para obtener su primera derivada:
-            \[ \frac{d}{dt}\gamma(t) = -K P_0 [D(t)]^{-2} \cdot D'(t) \]
-            Sustituimos $D'(t)$:
-            \[ \frac{d}{dt}\gamma(t) = \frac{r K P_0 (K - P_0)e^{r(t_0 - t)}}{[P_0 + (K - P_0)e^{r(t_0 - t)}]^2} \]
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{11_image.png}
+            \end{figure}
             Asumiendo poblaciones con sentido físico ($P_0 > 0$), el denominador nunca se anula. Al estar compuesta por funciones exponenciales y algebraicas suaves, $\gamma(t)$ es de clase $C^\infty$, cumpliendo con ser $C^1(I)$.
 
             \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
@@ -386,35 +428,43 @@
             Dado que $U = \mathbb{R}^2$, el par ordenado $\vec{v}(t)$ pertenece a $U$ para cualquier instante $t \in I$.
 
             \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d}{dt}\gamma(t) = \vec{F}(\vec{v}(t))$):}
-            \begin{itemize}[leftmargin=*]
-                \item \textbf{Lado Izquierdo (derivada calculada):}
-                \[ \frac{d}{dt}\gamma(t) = \frac{r K P_0 (K - P_0)e^{r(t_0 - t)}}{[D(t)]^2} \]
+            % \begin{itemize}[leftmargin=*]
+            %     \item \textbf{Lado Izquierdo (derivada calculada):}
+            %     \[ \frac{d}{dt}\gamma(t) = \frac{r K P_0 (K - P_0)e^{r(t_0 - t)}}{[D(t)]^2} \]
                 
-                \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
-                Evaluamos la función $\vec{F}$ sustituyendo $\gamma(t)$:
-                \[ \vec{F}(\vec{v}(t)) = r\gamma(t) \left( 1 - \frac{\gamma(t)}{K} \right) \]
-                Calculamos el término del paréntesis por separado:
-                \[ 1 - \frac{\gamma(t)}{K} = 1 - \frac{P_0}{D(t)} = \frac{D(t) - P_0}{D(t)} \]
-                Sustituimos el valor de $D(t) = P_0 + (K - P_0)e^{r(t_0 - t)}$ en el numerador:
-                \[ 1 - \frac{\gamma(t)}{K} = \frac{P_0 + (K - P_0)e^{r(t_0 - t)} - P_0}{D(t)} = \frac{(K - P_0)e^{r(t_0 - t)}}{D(t)} \]
-                Ahora multiplicamos este resultado por $r\gamma(t)$, recordando que $r\gamma(t) = \frac{r K P_0}{D(t)}$:
-                \[ \vec{F}(\vec{v}(t)) = \left( \frac{r K P_0}{D(t)} \right) \left( \frac{(K - P_0)e^{r(t_0 - t)}}{D(t)} \right) = \frac{r K P_0 (K - P_0)e^{r(t_0 - t)}}{[D(t)]^2} \]
+            %     \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
+            %     Evaluamos la función $\vec{F}$ sustituyendo $\gamma(t)$:
+            %     \[ \vec{F}(\vec{v}(t)) = r\gamma(t) \left( 1 - \frac{\gamma(t)}{K} \right) \]
+            %     Calculamos el término del paréntesis por separado:
+            %     \[ 1 - \frac{\gamma(t)}{K} = 1 - \frac{P_0}{D(t)} = \frac{D(t) - P_0}{D(t)} \]
+            %     Sustituimos el valor de $D(t) = P_0 + (K - P_0)e^{r(t_0 - t)}$ en el numerador:
+            %     \[ 1 - \frac{\gamma(t)}{K} = \frac{P_0 + (K - P_0)e^{r(t_0 - t)} - P_0}{D(t)} = \frac{(K - P_0)e^{r(t_0 - t)}}{D(t)} \]
+            %     Ahora multiplicamos este resultado por $r\gamma(t)$, recordando que $r\gamma(t) = \frac{r K P_0}{D(t)}$:
+            %     \[ \vec{F}(\vec{v}(t)) = \left( \frac{r K P_0}{D(t)} \right) \left( \frac{(K - P_0)e^{r(t_0 - t)}}{D(t)} \right) = \frac{r K P_0 (K - P_0)e^{r(t_0 - t)}}{[D(t)]^2} \]
                 
-                \item \textbf{Identidad:}\\
-                Ambos lados de la ecuación son idénticos, garantizando que la EDO se satisface rigurosamente.
-            \end{itemize}
+            %     \item \textbf{Identidad:}\\
+            %     Ambos lados de la ecuación son idénticos, garantizando que la EDO se satisface rigurosamente.
+            % \end{itemize}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{13_image.png}
+            \end{figure}
         \end{itemize}
 
         \subsubsection*{Comprobación de la Condición Inicial}
 
         El problema también pide que se cumpla la condición inicial $P(t_0) = P_0$. Así que, evaluamos nuestra función $\gamma(t)$ en el instante $t = t_0$:
 
-        \begin{align*}
-            \gamma(t_0) &= \frac{K P_0}{P_0 + (K - P_0)e^{r(t_0 - t_0)}} \\
-            \gamma(t_0) &= \frac{K P_0}{P_0 + (K - P_0)e^{0}} \\
-            \gamma(t_0) &= \frac{K P_0}{P_0 + (K - P_0)(1)} = \frac{K P_0}{P_0 + K - P_0} \\
-            \gamma(t_0) &= \frac{K P_0}{K} = P_0
-        \end{align*}
+        % \begin{align*}
+        %     \gamma(t_0) &= \frac{K P_0}{P_0 + (K - P_0)e^{r(t_0 - t_0)}} \\
+        %     \gamma(t_0) &= \frac{K P_0}{P_0 + (K - P_0)e^{0}} \\
+        %     \gamma(t_0) &= \frac{K P_0}{P_0 + (K - P_0)(1)} = \frac{K P_0}{P_0 + K - P_0} \\
+        %     \gamma(t_0) &= \frac{K P_0}{K} = P_0
+        % \end{align*}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\linewidth]{14_image.png}
+        \end{figure}
 
         \vspace{0.2cm}
         \noindent Por lo tanto, hemos demostrado que la función cumple tanto con la EDO como con la condición inicial.
@@ -424,56 +474,19 @@
 
         \subsection*{Solución}
 
-        Empezamos con la función original:
-
-        \[ P(t) = \frac{K P_0}{P_0 + (K - P_0)e^{r(t_0 - t)}} \]
-
-        El tiempo inicial es $t_0 = 0$. Al sustituir este valor, obtenemos:
-
-        \begin{align*}
-            P(t) &= \frac{K P_0}{P_0 + (K - P_0)e^{r(0 - t)}} \\
-            P(t) &= \frac{K P_0}{P_0 + (K - P_0)e^{-rt}}
-        \end{align*}
-
-        Multiplicamos tanto el numerador como el denominador por el factor $e^{rt}$:
-
-        \[ P(t) = \frac{K P_0 \cdot e^{rt}}{[P_0 + (K - P_0)e^{-rt}] \cdot e^{rt}} \]
-
-        Aplicamos la propiedad distributiva en el denominador:
-
-        \[ P(t) = \frac{K P_0 e^{rt}}{P_0 e^{rt} + (K - P_0)e^{-rt}e^{rt}} \]
-
-        Recordando por las leyes de los exponentes que $e^{-rt}e^{rt} = e^0 = 1$, el término de la derecha se simplifica:
-
-        \[ P(t) = \frac{K P_0 e^{rt}}{P_0 e^{rt} + K - P_0} \]
-
-        Reordenamos el denominador para agrupar los términos que contienen la constante $P_0$:
-
-        \[ P(t) = \frac{K P_0 e^{rt}}{K + P_0 e^{rt} - P_0} \]
-
-        Finalmente, factorizamos $P_0$ en el denominador:
-
-        \[ P(t) = \frac{K P_0 e^{rt}}{K + P_0(e^{rt} - 1)} \]
-
-        Por lo tanto, hemos demostrado cómo la función general evaluada en $t_0 = 0$ es equivalente a la expresión requerida.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\linewidth]{15_image.png}
+        \end{figure}
+        % Por lo tanto, hemos demostrado cómo la función general evaluada en $t_0 = 0$ es equivalente a la expresión requerida.
         \item ¿Qué tipo de condiciones iniciales tiene la ecuación del inciso b?
         
         \subsection*{Solución}
 
-        Evaluamos la función en el instante de tiempo $t = 0$.
-
-        Iniciamos con:
-
-        \[ P(t) = \frac{KP_0e^{rt}}{K + P_0(e^{rt} - 1)} \]
-
-        Sustituimos $t = 0$:
-
-        \begin{align*}
-            P(0) &= \frac{KP_0e^{r(0)}}{K + P_0(e^{r(0)} - 1)} \\
-            P(0) &= \frac{KP_0(1)}{K + P_0(1 - 1)} \\
-            P(0) &= \frac{KP_0}{K + 0} \\
-            P(0) &= P_0
-        \end{align*}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\linewidth]{16_image.png}
+        \end{figure}
 
         \textbf{Conclusión:} La ecuación del inciso (b) obedece a una condición inicial donde el tiempo de inicio está fijado en el origen ($t_0 = 0$) y la población en ese instante exacto es $P_0$. Es decir, asume explícitamente la condición $P(0) = P_0$.
         
