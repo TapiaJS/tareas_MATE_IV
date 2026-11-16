@@ -1,0 +1,76 @@
+% ============================================================
+% Sección 5
+% ============================================================
+\section{5 EDO Exactas por Factor Integrante}
+
+\begin{tcolorbox}[enunciado]
+\textbf{Clases:}
+\begin{itemize}[leftmargin=*]
+    \item Video 7) Factor Integrante $\mu(x)/\mu(y)$ para una ED Exacta. Esbozo Teórico 21Oct26
+    \item Video 8) Ejemplo Replicación de Datos. EDO Exacta con Factor Integrante $\mu(x,y)$ 26Oct26
+    \item Video 9) Clase del 28 Oct 2026
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{ACTIVIDADES}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item \textbf{Balance de Accesos a Memoria Caché L2 modificado}
+
+    Si ahora el modelo para Balance de Accesos a Memoria toma la expresión:
+    \[ (2xy + y^{2})\,dx + (xy + 2y^{2})\,dy = 0 \]
+    Utilizando el ``criterio'' que se vio en la clase del 21 de Octubre (Video 7), muestra que el factor integrante de la forma:
+    \begin{enumerate}[label=\roman*., leftmargin=*]
+        \item $\mu(x)$ no es posible
+        \item $\mu(y)$ sí existe
+    \end{enumerate}
+    \textbf{NOTA:} SOLO SE PIDE QUE MUESTRES LA EXISTENCIA NO QUE DIGAS CUÁL ES.
+    \subsection*{Solución}
+    % Escribe tu respuesta aquí
+
+    \item \textbf{Balance de datos en una red P2P}
+
+    Como vimos en clase (Video 8), el factor integrante en general depende de las dos variables involucradas, $\mu(x,y)$; los casos $\mu(x)$ y $\mu(y)$ son casos particulares. La siguiente situación ejemplifica esto.
+
+    En una red P2P, los datos se conservan entre los nodos que comparten ``$x$'' y los que descargan ``$y$''. La ecuación diferencial para modelar este fenómeno es:
+
+    \textbf{Modelo Ficticio}\footnote{Un Modelo Real para Redes Peer-to-Peer (P2P) lo puedes encontrar en el artículo: Qiu, D., y Srikant, R. (2004). \textit{Modeling and performance analysis of BitTorrent-like peer-to-peer networks}.}:
+    \begin{equation*}
+        y\,dx - x\,dy = 0 \tag{1}
+    \end{equation*}
+
+    Responde lo siguiente:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Comprueba que no es exacta.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Muestra que un factor integrante es:
+        \[ \mu(x,y) = \frac{1}{x^{2} + y^{2}} \]
+        \textbf{NOTA:} SOLO DEBES MOSTRAR QUE ESTE FACTOR INTEGRANTE VUELVE LA EDO (1) EXACTA.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+
+    \item \textbf{Conexiones TCP}
+
+    Las conexiones entre equipos de una red se conservan entre activas ($x$) o en espera ($y$). Una ED modelo para este problema es la siguiente:
+    \begin{equation*}
+        (y + x)\,dx - x\,dy = 0 \tag{2}
+    \end{equation*}
+
+    Responde:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Comprueba que no es exacta.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Encuentra el factor integrante.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Resuelve.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+\end{enumerate}

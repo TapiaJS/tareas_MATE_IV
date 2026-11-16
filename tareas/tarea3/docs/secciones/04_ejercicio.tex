@@ -1,0 +1,112 @@
+% ============================================================
+% Sección 4
+% ============================================================
+\section{4 EDO Exactas}
+
+\begin{tcolorbox}[enunciado]
+\textbf{Clases:}
+\begin{itemize}[leftmargin=*]
+    \item Video 5) EDO Exacta Antecedentes Teóricos, Definición y Criterio. MCA4 30 Sep 26
+    \item Video 6) Ejemplo TCP. Vegas EDO Exacta MCA4 7 Oct 26
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{ACTIVIDADES}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item Da la Definición de EDO Exacta (Video 5).
+    \subsection*{Solución}
+    % Escribe tu respuesta aquí
+
+    \item Da el Criterio para determinar si una EDO es Exacta (Video 5).
+    \subsection*{Solución}
+    % Escribe tu respuesta aquí
+
+    \item \textbf{Balance de procesos en CPU}
+
+    Supongamos que el número de procesos en un sistema se conserva, es decir, a lo largo de un periodo de tiempo siempre es el mismo y definamos como:
+    \begin{itemize}[leftmargin=*]
+        \item $P$: procesos activos
+        \item $Q$: procesos en cola
+    \end{itemize}
+    Entonces:
+    \[ P(t) + Q(t) = C \]
+    y consideremos como EDO modelo de este problema la siguiente expresión:
+    \[ (2P + Q)\,dP + (P + 2Q)\,dQ = 0 \]
+    Utilizando la Definición de EDO Exacta (No el Criterio) determina si la EDO dada es Exacta, donde:
+    \[ F(P,Q) = P^{2} + PQ + Q^{2} \]
+    \textbf{HINT:} En el Video 5 viene cómo sacar la diferencial total a $F(P,Q)$ (o aplicarla mediante regla de la cadena).
+    \subsection*{Solución}
+    % Escribe tu respuesta aquí
+
+    \item \textbf{Conservación de ancho de banda en WiFi}
+
+    En una red WiFi, el ancho de banda total se distribuye entre usuarios activos $x$ e interferencia $y$. Una posible ecuación diferencial modelo, considerando estos actores, es la siguiente:
+    \[ (3x^{2} + 2y)\,dx + (2x + 3y^{2})\,dy = 0 \]
+    Utilizando el Criterio de Exacta (No la definición) determina si la EDO dada es Exacta.
+    \subsection*{Solución}
+    % Escribe tu respuesta aquí
+
+    \item \textbf{Balance de Accesos a Memoria Caché L2 (Video 6)}
+
+    En un procesador moderno, la caché L2 (\textit{Level 2}) es una memoria intermedia de alta velocidad que almacena datos e instrucciones de uso frecuente para reducir el tiempo de acceso a la memoria principal (RAM). Cuando la CPU necesita un dato, primero busca en la caché L1; si no lo encuentra, busca en la L2.
+
+    El rendimiento de la caché L2 depende del balance entre \textit{hits} y \textit{misses}:
+    \begin{itemize}[leftmargin=*]
+        \item Un \textit{hit} (acierto) se produce si el dato requerido se encuentra en ella y el acceso al dato por lo tanto es rápido y barato.
+        \item Un \textit{miss} (fallo) implica que el dato no está en la caché L2 y debe buscarlo en un nivel inferior de la jerarquía en memoria (caché L3 o RAM), introduciendo una latencia significativa que penaliza el rendimiento, por lo cual este proceso es lento y costoso.
+    \end{itemize}
+
+    Vale la pena precisar a qué aspectos nos referimos cuando hablamos de rápido-barato o lento-costoso:
+
+    \vspace{0.3cm}
+    \begin{center}
+    \resizebox{\linewidth}{!}{
+    \begin{tabular}{l p{3.5cm} p{4cm} p{5.5cm}}
+    \toprule
+    \textbf{Aspecto} & \textbf{Hit} & \textbf{Miss} & \textbf{Comparativas} \\
+    \midrule
+    Tiempo & $\sim 10\text{--}20$ ciclos & $\sim 100\text{--}300$ ciclos de CPU & Miss es de $10$ a $20$ veces más lento \\
+    \addlinespace
+    Energía & $\sim 1\text{--}5\text{ pJ}$ & $\sim 100\text{--}500\text{ pJ}$ & Miss consume $100$ veces más energía \\
+    \addlinespace
+    Recursos & Solo caché L2 & Caché + bus + controlador + RAM & Miss moviliza todo el subsistema de memoria \\
+    \addlinespace
+    Impacto en \textit{pipeline} & Mínimo & Puede causar \textit{stall} & Miss puede detener la CPU por estar esperando el dato \\
+    \addlinespace
+    Frecuencia & Alta ($80\text{--}95\%$) & Baja ($5\text{--}20\%$) & \textit{Hits} son la norma \\
+    \addlinespace
+    Costo relativo & Barato & Costoso & --- \\
+    \bottomrule
+    \end{tabular}
+    }
+    \end{center}
+    \vspace{0.3cm}
+
+    En un sistema ideal, el total de accesos a memoria se conserva y es de los dos tipos antes mencionados: \textit{hit} o \textit{miss}. Por lo tanto, si llamamos:
+    \begin{itemize}[leftmargin=*]
+        \item $x$: número de \textit{hits}
+        \item $y$: número de \textit{misses}
+    \end{itemize}
+    Entonces, para un total de $N$ accesos:
+    \[ x + y = N \]
+    donde el total $N$ se conserva, y por el Principio de localidad se considera que $x > y$.
+
+    Este principio de conservación de accesos se puede modelar mediante una ecuación diferencial exacta que relaciona el número de \textit{hits} $x$ y el de \textit{misses} $y$, la cual queda expresada como:
+    \[ (2x + y)\,dx + (x + 2y)\,dy = 0 \]
+
+    Responde lo siguiente:
+    \begin{enumerate}[label=(\alph*), leftmargin=*]
+        \item Comprueba que es exacta.
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+
+        \item Resuelve la ED y para dar un valor específico a la constante $C$ (letra usual utilizada) que se obtiene, considera la información dada a continuación:
+
+        \begin{quote}
+        \textit{Al analizar cómo se comportan los núcleos de la arquitectura Zen 5 de AMD bajo cargas de juegos pesados como Cyberpunk 2077 y Call of Duty, se encontró (según los chismes de la red) que la Tasa de Aciertos (hits) de la Caché L2 generalmente ronda entre el $85\%$ y $95\%$ en la mayoría de las instrucciones y datos secuenciales; sin embargo, los videojuegos manejan árboles de decisión muy caóticos, lo que genera fallos inevitables.}
+        \end{quote}
+        \subsection*{Solución}
+        % Escribe tu respuesta aquí
+    \end{enumerate}
+\end{enumerate}
