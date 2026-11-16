@@ -55,7 +55,7 @@
             \item \textbf{Expresión en forma normal ($k = 2$):}
             \[ \frac{d^2x}{dt^2} = -\omega_0^2 x \]
             
-            \item \textbf{Elementos formales:}
+            \item \textbf{Elementos:}
             \begin{itemize}[leftmargin=*]
                 \item \textbf{Orden de la EDO ($k$):} $k = 2$ (segundo orden).
                 \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $\gamma: I \to \mathbb{R}^1$).
@@ -147,7 +147,7 @@
             \item \textbf{Expresión en forma normal ($k = 2$):}
             \[ \frac{d^2x}{dt^2} = -2\gamma\frac{dx}{dt} - \omega_0^2 x \]
             
-            \item \textbf{Elementos formales:}
+            \item \textbf{Elementos:}
             \begin{itemize}[leftmargin=*]
                 \item \textbf{Orden de la EDO ($k$):} $k = 2$ (segundo orden).
                 \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $\gamma: I \to \mathbb{R}^1$).
@@ -234,7 +234,7 @@
             \item \textbf{Expresión en forma normal ($k = 2$):}
             \[ \frac{d^2x}{dt^2} = -2\gamma\frac{dx}{dt} - \gamma^2 x \]
             
-            \item \textbf{Elementos formales:}
+            \item \textbf{Elementos:}
             \begin{itemize}[leftmargin=*]
                 \item \textbf{Orden de la EDO ($k$):} $k = 2$ (segundo orden).
                 \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $x: I \to \mathbb{R}^1$).
@@ -314,7 +314,7 @@
             \item \textbf{Expresión en forma normal ($k = 2$):}
             \[ \frac{d^2x}{dt^2} = -2\gamma\frac{dx}{dt} - \omega_0^2 x \]
             
-            \item \textbf{Elementos formales:}
+            \item \textbf{Elementos:}
             \begin{itemize}[leftmargin=*]
                 \item \textbf{Orden de la EDO ($k$):} $k = 2$ (segundo orden).
                 \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $x: I \to \mathbb{R}^1$).
@@ -399,7 +399,7 @@
             \item \textbf{Expresión en forma normal ($k = 1$):}
             \[ \frac{dP}{dt} = rP - \frac{r}{K}P^2 \]
             
-            \item \textbf{Elementos formales:}
+            \item \textbf{Elementos:}
             \begin{itemize}[leftmargin=*]
                 \item \textbf{Orden de la EDO ($k$):} $k = 1$ (primer orden).
                 \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $\gamma: I \to \mathbb{R}^1$).
@@ -511,48 +511,28 @@
 
         \subsection*{Solución}
 
-        Para comprobar que la anterior función es la solución de la ecuación diferencial, aplicamos derivación implícita con respecto a la variable independiente $x$ en ambos lados de la igualdad.
-
-        \[ \frac{d}{dx} (y^3 - 5y + x^2 - 4x) = \frac{d}{dx} (c) \]
-
-        Aplicando la regla de la cadena para los términos que contienen a la variable dependiente $y$:
-
-        \[ 3y^2 \frac{dy}{dx} - 5 \frac{dy}{dx} + 2x - 4 = 0 \]
-
-        Agrupamos y factorizamos el término común $\frac{dy}{dx}$:
-
-        \[ \frac{dy}{dx} (3y^2 - 5) + 2x - 4 = 0 \]
-        \[ \frac{dy}{dx} (3y^2 - 5) = 4 - 2x \]
-        \[ \frac{dy}{dx} = \frac{4 - 2x}{3y^2 - 5} \]
-
-        La expresión coincide con la ecuación diferencial original. Por lo que, hemos demostrado que es solución.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\linewidth]{17_image.png}
+        \end{figure}
 
         \item ¿Qué valores nunca se pueden tomar? ¿Son puntos del demonio o funciones?
         
         \subsection*{Solución}
 
-        \[ \frac{dy}{dx} = \frac{4 - 2x}{3y^2 - 5} \]
-
-        La expresión matemática se indefine (causa una división por cero) cuando el denominador se anula. Para encontrar estos valores, igualamos el denominador a cero y despejamos:
-
-        \begin{align*}
-            3y^2 - 5 &= 0 \\
-            3y^2 &= 5 \\
-            y^2 &= \frac{5}{3} \\
-            y &= \pm\sqrt{\frac{5}{3}}
-        \end{align*}
-
-        Por lo tanto, los valores que la variable dependiente nunca puede alcanzar son \textbf{$y = \sqrt{\frac{5}{3}}$} y \textbf{$y = -\sqrt{\frac{5}{3}}$}.
-
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\linewidth]{18_image.png}
+        \end{figure}
         \vspace{0.3cm}
         \noindent\textbf{¿Son puntos del demonio o funciones?}\\
-        Estos valores representan \textbf{funciones} (específicamente, funciones constantes), no ``puntos del demonio''.
+        Estos valores representan \textbf{funciones} (específicamente, funciones constantes).
 
-        Un ``punto del demonio'' es una coordenada específica $(x_0, y_0)$ en el plano donde el sistema colapsa o se indefine de manera puntual. En nuestro caso, la restricción no depende de $x$; la indefinición ocurre para \textit{cualquier} valor de $x$ siempre que $y$ tome esos valores críticos. Geométricamente, esto significa que las restricciones no son puntos aislados, sino dos rectas horizontales continuas ($y = 1.29$ y $y = -1.29$ aproximadamente) que cruzan todo el plano cartesiano.
+        La restricción no depende de $x$; la indefinición ocurre para \textit{cualquier} valor de $x$ siempre que $y$ tome esos valores críticos. Geométricamente, esto significa que las restricciones no son puntos aislados, sino dos rectas horizontales continuas ($y = 1.29$ y $y = -1.29$ aproximadamente) que cruzan todo el plano cartesiano.
         
         \item Qué condición impone a las curvas integrales los valores determinados en el inciso anterior.
         
-        Al analizar la ecuación diferencial, resulta evidente que cuando la variable dependiente toma estos valores (\textbf{$y = \sqrt{\frac{5}{3}}$} y \textbf{$y = -\sqrt{\frac{5}{3}}$}), el denominador se anula y la pendiente de la curva tiende a infinito. Esto significa que, al aproximarse a estas líneas horizontales, las curvas integrales desarrollan tangentes completamente verticales. Sin embargo, por definición matemática, la gráfica de una solución derivable no puede tener una línea tangente vertical en ninguna parte. En consecuencia, los valores que determinamos actúan como una barrera que fragmenta el plano; las soluciones quedan confinadas a regiones específicas y no pueden cruzar estas fronteras, limitando así el intervalo de definición en el que una solución particular es válida y continua.
+        Evidentemente, cuando la variable dependiente toma estos valores (\textbf{$y = \sqrt{\frac{5}{3}}$} y \textbf{$y = -\sqrt{\frac{5}{3}}$}), el denominador se anula y la pendiente de la curva tiende a infinito. Esto significa que, al aproximarse a estas líneas horizontales, las curvas integrales desarrollan tangentes completamente verticales. Sin embargo, por definición matemática, la gráfica de una solución derivable no puede tener una línea tangente vertical en ninguna parte. Entonces, los valores que determinamos actúan como una barrera que fragmenta el plano; las soluciones quedan confinadas a regiones específicas y no pueden cruzar estas fronteras, limitando así el intervalo de definición en el que una solución particular es válida y continua.
     \end{enumerate}
 
     \item \textbf{Ecuación de Bernoulli}
@@ -568,7 +548,7 @@
         \item \textbf{Expresión en forma normal ($k = 1$):}
         \[ \frac{dz}{dt} = z^2 - z \]
         
-        \item \textbf{Elementos formales:}
+        \item \textbf{Elementos:}
         \begin{itemize}[leftmargin=*]
             \item \textbf{Orden de la EDO ($k$):} $k = 1$ (primer orden).
             \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar, $\gamma: I \to \mathbb{R}^1$).
@@ -581,14 +561,10 @@
 
     \begin{itemize}[leftmargin=*]
         \item \textbf{Regularidad $C^k$ ($C^1$):}\\
-        Reescribimos la función propuesta usando exponentes negativos para facilitar su derivación mediante la regla de la cadena: $\gamma(t) = (1 + Ce^t)^{-1}$.\\
-        Calculamos su primera derivada con respecto al tiempo:
-        \begin{align*}
-            \frac{d}{dt}\gamma(t) &= -1(1 + Ce^t)^{-2} \cdot \frac{d}{dt}(1 + Ce^t) \\
-            \frac{d}{dt}\gamma(t) &= -1(1 + Ce^t)^{-2} \cdot (Ce^t) \\
-            \frac{d}{dt}\gamma(t) &= \frac{-Ce^t}{(1 + Ce^t)^2}
-        \end{align*}
-        Mientras el denominador no se anule, esta función exponencial es infinitamente diferenciable ($C^\infty$), lo que garantiza que es de clase $C^1$.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\linewidth]{19_image.png}
+        \end{figure}
 
         \item \textbf{Condición i) $I$ es un intervalo abierto:}\\
         El dominio temporal depende del valor de la constante $C$. Para evitar la división por cero, requerimos que $1 + Ce^t \neq 0$, es decir, $Ce^t \neq -1$. \\
@@ -600,27 +576,11 @@
         Dado que $U = \mathbb{R}^2$, el vector $\vec{v}(t)$ pertenece a $U$ para cualquier instante $t \in I$ en el que la función esté bien definida.
 
         \item \textbf{Condición iii) Satisfacción de la ecuación ($\frac{d}{dt}\gamma(t) = \vec{F}(\vec{v}(t))$):}
-        \begin{itemize}[leftmargin=*]
-            \item \textbf{Lado Izquierdo (derivada previamente calculada):}
-            \[ \frac{d}{dt}\gamma(t) = \frac{-Ce^t}{(1 + Ce^t)^2} \]
-            
-            \item \textbf{Lado Derecho ($\vec{F}(\vec{v}(t))$):}\\
-            Evaluamos la función en forma normal sustituyendo $\gamma(t)$:
-            \begin{align*}
-                \vec{F}(\vec{v}(t)) &= [\gamma(t)]^2 - \gamma(t) \\
-                \vec{F}(\vec{v}(t)) &= \left( \frac{1}{1 + Ce^t} \right)^2 - \left( \frac{1}{1 + Ce^t} \right)
-            \end{align*}
-            Para restar estas fracciones, encontramos el denominador común $(1 + Ce^t)^2$:
-            \[ \vec{F}(\vec{v}(t)) = \frac{1}{(1 + Ce^t)^2} - \frac{1 + Ce^t}{(1 + Ce^t)^2} \]
-            Restamos los numeradores directamente:
-            \[ \vec{F}(\vec{v}(t)) = \frac{1 - (1 + Ce^t)}{(1 + Ce^t)^2} = \frac{1 - 1 - Ce^t}{(1 + Ce^t)^2} = \frac{-Ce^t}{(1 + Ce^t)^2} \]
-            
-            \item \textbf{Identidad:}
-            \[ \frac{-Ce^t}{(1 + Ce^t)^2} = \frac{-Ce^t}{(1 + Ce^t)^2} \]
-        \end{itemize}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\linewidth]{20_image.png}
+        \end{figure}
     \end{itemize}
-
-    \noindent Por lo tanto, hemos demostrado que la función $z(t) = \frac{1}{1+Ce^t}$ es efectivamente una solución de la Ecuación de Bernoulli.
 
     \item \textbf{EDO Exacta.}
     \[ x(2x^{2}+y^{2})+y(x^{2}+2y^{2})y^{\prime}=0 \]
@@ -636,7 +596,7 @@
         \item \textbf{Expresión en forma normal ($k = 1$):}
         \[ y' = -\frac{x(2x^2+y^2)}{y(x^2+2y^2)} \]
         
-        \item \textbf{Elementos formales:}
+        \item \textbf{Elementos:}
         \begin{itemize}[leftmargin=*]
             \item \textbf{Orden de la EDO ($k$):} $k = 1$ (primer orden).
             \item \textbf{Dimensión del espacio ($d$):} $d = 1$ (sistema escalar donde $y$ es función de $x$).
@@ -657,26 +617,11 @@
         El vector de estado para $k=1$ es $\vec{v}(x) = (x, y(x))$. Siempre que restrinjamos nuestro intervalo $I$ para evadir los puntos donde $y(x^2+2y^2) = 0$, el vector $\vec{v}(x)$ pertenecerá al dominio $U$.
 
         \item \textbf{Condición iii) Satisfacción de la ecuación ($y'(x) = \vec{F}(\vec{v}(x))$):}\\
-        Derivamos ambos lados de la función propuesta $\frac{1}{2}(x^4 + x^2y^2 + y^4) = k$ con respecto a $x$, aplicando la regla de la cadena para los términos con $y$:
-        \begin{align*}
-            \frac{d}{dx} \left[ \frac{1}{2}(x^4 + x^2y^2 + y^4) \right] &= \frac{d}{dx} [k] \\
-            \frac{1}{2} \left[ 4x^3 + \left(2xy^2 + x^2(2yy')\right) + 4y^3y' \right] &= 0
-        \end{align*}
-        
-        Multiplicamos el factor $\frac{1}{2}$ por todos los términos dentro del corchete:
-        \[ 2x^3 + xy^2 + x^2yy' + 2y^3y' = 0 \]
-        
-        Agrupamos los términos que no contienen $y'$ y factorizamos $y'$ en los que sí lo contienen:
-        \[ (2x^3 + xy^2) + (x^2y + 2y^3)y' = 0 \]
-        
-        Extraemos factores comunes $x$ en el primer bloque y $y$ en el segundo bloque:
-        \[ x(2x^2 + y^2) + y(x^2 + 2y^2)y' = 0 \]
-        
-        Si despejamos $y'$ para evaluar la identidad de la forma normal, obtenemos exactamente el campo de pendientes original:
-        \[ y' = -\frac{x(2x^2+y^2)}{y(x^2+2y^2)} \]
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\linewidth]{21_image.png}
+        \end{figure}
     \end{itemize}
-
-    \noindent Por lo tanto, hemos demostrado que la función $x(2x^2+y^2) + y(x^2+2y^2)y' = 0$ es efectivamente una solución de la EDO Exacta.
 
     \item \textbf{Sistema de EDO.} Sean $x(t)$, $y(t)$, tal que:
     \begin{align*}
@@ -698,11 +643,11 @@
             y' &= 2x - y
         \end{align*}
         
-        \item \textbf{Elementos formales:}
+        \item \textbf{Elementos:}
         \begin{itemize}[leftmargin=*]
             \item \textbf{Orden del Sistema ($k$):} $k = 1$ (primer orden, ya que solo hay primeras derivadas).
-            \item \textbf{Dimensión del espacio ($d$):} $d = 2$. Aquí tenemos un sistema acoplado con dos variables dependientes ($x$ e $y$) que evolucionan respecto al tiempo $t$. La curva solución es un vector $\gamma: I \to \mathbb{R}^2$ tal que $\gamma(t) = (x(t), y(t))$.
-            \item \textbf{Función $\vec{F}$ y dominio $U$:} La dinámica del sistema está dictada por el campo vectorial $\vec{F}(t, x, y) = (-x - 3y, \ 2x - y)$. Al ser polinomios lineales, la función es continua en todo el espacio tridimensional abierto $U = \mathbb{R}^3$.
+            \item \textbf{Dimensión del espacio ($d$):} $d = 2$. Es un sistema acoplado con dos variables dependientes ($x$ e $y$) que evolucionan respecto al tiempo $t$. La curva solución es un vector $\gamma: I \to \mathbb{R}^2$ tal que $\gamma(t) = (x(t), y(t))$.
+            \item \textbf{Función $\vec{F}$ y dominio $U$:} $\vec{F}(t, x, y) = (-x - 3y, \ 2x - y)$. Al ser polinomios lineales, la función es continua en todo el espacio tridimensional abierto $U = \mathbb{R}^3$.
             \item \textbf{Funciones propuestas:}
             \begin{align*}
                 x(t) &= e^{-t}[3c_1\cos(\sqrt{6}t) + 3c_2\sin(\sqrt{6}t)] \\
@@ -726,41 +671,15 @@
         Dado que $U = \mathbb{R}^3$, el vector de estado existe y pertenece invariablemente al dominio $U$ para cualquier instante $t \in I$.
 
         \item \textbf{Condición iii) Satisfacción de la ecuación ($\gamma'(t) = \vec{F}(\vec{v}(t))$):}\\
-        Para simplificar el cálculo de las derivadas, definamos las partes trigonométricas de las funciones como $u(t)$ y $v(t)$:
-        \begin{itemize}[leftmargin=*]
-            \item $u(t) = 3c_1\cos(\sqrt{6}t) + 3c_2\sin(\sqrt{6}t) \implies x(t) = e^{-t}u(t)$
-            \item $v(t) = \sqrt{6}c_1\sin(\sqrt{6}t) - \sqrt{6}c_2\cos(\sqrt{6}t) \implies y(t) = e^{-t}v(t)$
-        \end{itemize}
-        
-        Observemos una propiedad calculando las derivadas de $u(t)$ y $v(t)$ usando la regla de la cadena para el argumento $\sqrt{6}t$:
-        \begin{enumerate}[label=\arabic*., leftmargin=*]
-            \item $u'(t) = -3\sqrt{6}c_1\sin(\sqrt{6}t) + 3\sqrt{6}c_2\cos(\sqrt{6}t) = -3(\sqrt{6}c_1\sin(\sqrt{6}t) - \sqrt{6}c_2\cos(\sqrt{6}t))$.\\
-            Es decir, \textbf{$u'(t) = -3v(t)$}.
-            
-            \item $v'(t) = 6c_1\cos(\sqrt{6}t) + 6c_2\sin(\sqrt{6}t) = 2(3c_1\cos(\sqrt{6}t) + 3c_2\sin(\sqrt{6}t))$.\\
-            Es decir, \textbf{$v'(t) = 2u(t)$}.
-        \end{enumerate}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\linewidth]{22_image.png}
+        \end{figure}
 
-        Ahora, derivamos $x(t)$ y $y(t)$ usando la regla del producto y sustituimos estas identidades:
-        \begin{itemize}[leftmargin=*]
-            \item \textbf{Derivada de $x(t)$:}
-            \[ x'(t) = -e^{-t}u(t) + e^{-t}u'(t) \]
-            Sustituimos $u'(t) = -3v(t)$:
-            \[ x'(t) = -e^{-t}u(t) - 3e^{-t}v(t) \]
-            Reconociendo las funciones originales ($x(t) = e^{-t}u(t)$ y $y(t) = e^{-t}v(t)$):
-            \[ x'(t) = -x(t) - 3y(t) \]
-            \textit{Esta expresión es idéntica a la primera ecuación del sistema ($x' = -x - 3y$).}
-            
-            \item \textbf{Derivada de $y(t)$:}
-            \[ y'(t) = -e^{-t}v(t) + e^{-t}v'(t) \]
-            Sustituimos $v'(t) = 2u(t)$:
-            \[ y'(t) = -e^{-t}v(t) + 2e^{-t}u(t) \]
-            Reconociendo las funciones originales y reordenando ($x(t) = e^{-t}u(t)$ y $y(t) = e^{-t}v(t)$):
-            \[ y'(t) = -y(t) + 2x(t) = 2x(t) - y(t) \]
-            \textit{Esta expresión es idéntica a la segunda ecuación del sistema ($y' = 2x - y$).}
-        \end{itemize}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\linewidth]{23_image.png}
+        \end{figure}
     \end{itemize}
 
-    \vspace{0.3cm}
-    \noindent Las derivadas de las funciones propuestas coinciden con el campo vectorial del sistema. Por lo que, hemos demostrado que ambas funciones acopladas son la solución general de la EDO.
 \end{enumerate}
